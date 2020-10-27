@@ -9,6 +9,8 @@ IMAP_PORT = 993
 IMAP_USERNAME = 'email@example.com'
 IMAP_PASSWORD = '<Password: WfPjCqrlOK4Sd_dwyJ27mdxA>'
 IMAP_CERT_FILE = ''
+IMAP_BOX_PUBLISHED = ''
+IMAP_BOX_DEADLETTER = ''
 
 IMAP_HOST = 'mail.example.com'
 SMTP_PORT = 465

@@ -18,7 +18,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 ALLOWED_HOSTS = [
-    'localhost'
+    'localhost',
+    'shit.kumbier.it'
 ]
 
 
@@ -122,3 +123,8 @@ SITE_ID = 1
 ADD_SLASH = True
 
 from .private_settings import *
+
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static_collection')
+    STATIC_URL = "/static/"
+
