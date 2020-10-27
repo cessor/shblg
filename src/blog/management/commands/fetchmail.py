@@ -88,9 +88,14 @@ class PublicKeyMismatch(Mismatch):
 
 class VerifiedMessage:
     def __init__(self, subject: str, body: str, author: Author):
-        self.subject = subject
+        self._subject = subject
         self.body = body
         self.author = author
+
+    @property
+    def subject(self):
+        text, encoding = decode_header(self._subject)[0]
+        return text.decode(encoding)
 
 
 class MultipartMessage:
@@ -225,7 +230,6 @@ class Command(BaseCommand):
                 # Fetch actual mail
                 status, response = imap.fetch(mail_id, '(RFC822)')
                 (flags, message_bytes), _ = response
-
 
                 try:
                     # Verify Message
