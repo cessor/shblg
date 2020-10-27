@@ -12,6 +12,6 @@ echo "Collecting static assets"
 python3 manage.py collectstatic --no-input
 
 echo "Firing up webserver"
-gunicorn psi.wsgi:application --bind 0.0.0.0:8000 --error-logfile '-' --access-logfile '-'
+gunicorn shit.wsgi:application --bind 0.0.0.0:8000 --error-logfile '-' --access-logfile '-'
 
 exit 0
