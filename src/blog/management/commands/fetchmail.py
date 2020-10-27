@@ -95,7 +95,10 @@ class VerifiedMessage:
     @property
     def subject(self):
         text, encoding = decode_header(self._subject)[0]
-        return text.decode(encoding)
+        try:
+            return text.decode(encoding)
+        except AttributeError:
+            return text
 
 
 class MultipartMessage:
