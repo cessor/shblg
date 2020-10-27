@@ -1,0 +1,29 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'blog/css.css' %}">
+        <!-- <link rel="shortcut icon" type="image/png" href="images/assets/logo.png"> -->
+        <title>{% block title %}{% endblock %} | Schneider &amp; Hofmeister IT</title>
+    </head>
+    <body>
+        <header>
+            <h1>Schneider &amp; Hofmeister IT</h1>
+        </header>
+        <nav>
+            <ul class="menu">
+                <li class="menuitem"><a href="{% url 'blog:index' %}">{% trans 'Artikel' %}</a></li>
+                <li class="menuitem"><a href="{% url 'blog:tags' %}">{% trans 'Tags' %}</a></li>
+            </ul>
+        </nav>
+        <main>
+        {% block content %}{% endblock %}
+        </main>
+    </body>
+</html>

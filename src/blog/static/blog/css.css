@@ -1,0 +1,47 @@
+ul.menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+ul.menu li.menuitem {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 1em;
+}
+
+ul.authors {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+ul.authors li.author {
+    display: inline-block;
+    color: #aaa;
+    margin-right: 1em;
+}
+
+ul.tags {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+ul.tags li.tag {
+    display: inline-block;
+    margin: 0.25rem;
+    padding: 0.25rem;
+    border: 1px solid white;
+    border-radius: 5px;
+}

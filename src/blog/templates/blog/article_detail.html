@@ -1,0 +1,31 @@
+{% extends 'blog/_layout.html' %}
+{% load markdown %}
+{% load humanize %}
+{% load i18n %}
+
+
+
+{% block title %}{{ article.title }}| Artikel{% endblock %}
+
+
+{% block content %}
+<article>
+<h1>{{ article.title }}</h1>
+<small>
+    {% trans 'Veröffentlicht ' %} <a title="{{ article.published}}">{{ article.published|naturalday }}</a>
+</small>
+<ul class="authors">
+    {% for author in article.authors.all %}
+    <li class="author">{{ author }}</li>
+    {% endfor %}
+</ul>
+
+<ul class="tags">
+    {% for tag in article.tags.all %}
+    <li class="tag" style="background-color: {{ tag.color }}">{{ tag }}</li>
+    {% endfor %}
+</ul>
+
+{{ article.content|markdown|safe }}
+</article>
+{% endblock %}

@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    volumes:
+      # source:target
+      - ./volumes/static_collection:/var/shit/static_collection/
+      - ./volumes/data/:/var/shit/data/
+      - ./volumes/private_settings.py:/var/shit/shit/private_settings.py
+    ports:
+      - "127.0.0.1:8000:8000"
