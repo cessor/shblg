@@ -22,7 +22,46 @@ class AuthorAdmin(UserAdmin):
         }),  # Don't change these commas
     )
 
-    list_display = UserAdmin.list_display + ('has_pgp_key',)
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        if request.user.is_superuser:
+            return queryset
+        return queryset.filter(username=request.user.username)
+
+    def get_form(self, request, obj=None, **kwargs):
+        # Source:
+        # https://realpython.com/manage-users-in-django-admin/
+        form = super().get_form(request, obj, **kwargs)
+        is_superuser = request.user.is_superuser
+
+        # Disable all fields
+        disabled_fields = [
+            field.name for field in models.Author._meta.fields
+        ] + [ 'groups', 'user_permissions',]
+
+        # Superusers can do whatevery they want
+        if is_superuser:
+            disabled_fields = []
+
+        # Enable editing personal data
+        if (
+            not is_superuser
+            and obj is not None
+            and obj == request.user
+        ):
+            disabled_fields.remove('biography')
+            disabled_fields.remove('email')
+            disabled_fields.remove('first_name')
+            disabled_fields.remove('last_name')
+            disabled_fields.remove('pgp_public_key')
+
+        # Disable all fields
+        for field in disabled_fields:
+            if field in form.base_fields:
+                form.base_fields[field].disabled = True
+
+        return form
+
 
 
 @admin.register(models.Tag)

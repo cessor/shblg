@@ -13,6 +13,7 @@ Todo
  - [x] Site in den List-Fields des Article-Admin anzeigen
  - [x] Docstring css anpassen
  - [x] Highlighting für JavaScript und HTML
+ - [x] Admin Interface so konfiguriert, dass User nur ihre eigenen Daten ändern können
  - [ ] Admin-Links um Artikel hinzuzufügen
  - [ ] Besserer header
  - [ ] User Pics
