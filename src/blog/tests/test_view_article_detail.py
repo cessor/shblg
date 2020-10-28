@@ -37,7 +37,7 @@ class ArticleTests(TestCase):
         # Assert: Authors are listed correctly
         self.assertEqual(
             authors,
-            'Geschreiben von Lars.'
+            'Geschrieben von Lars.'
         )
 
     def test_two_authors(self):
@@ -73,7 +73,7 @@ class ArticleTests(TestCase):
         # Assert: Authors are listed correctly
         self.assertEqual(
             authors,
-            'Geschreiben von Lars und Horst.'
+            'Geschrieben von Lars und Horst.'
         )
 
     def test_more_than_two_authors(self):
@@ -115,5 +115,5 @@ class ArticleTests(TestCase):
         # Assert: Authors are listed correctly
         self.assertEqual(
             authors,
-            'Geschreiben von Lars, Horst und Johannes.'
+            'Geschrieben von Lars, Horst und Johannes.'
         )

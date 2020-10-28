@@ -1,6 +1,6 @@
 {% load i18n %}
 <span class="authors">
-    {% trans 'Geschreiben von' %}
+    {% trans 'Geschrieben von' %}
     {% if article.authors.count == 1 %}
         {# Geschrieben von Johannes. #}
         <span class="author" >{{ article.authors.first.first_name }}</span>.
