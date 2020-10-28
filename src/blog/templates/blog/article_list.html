@@ -5,6 +5,7 @@
 
 
 {% block content %}
+<h1>Artikel</h1>
 <ul class="articles">
 {% for article in articles %}
     <li class="article"><a href="{{ article.get_absolute_url }}">{{ article }}</a></li>

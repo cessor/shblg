@@ -22,7 +22,7 @@
 
 <ul class="tags">
     {% for tag in article.tags.all %}
-    <li class="tag" style="background-color: {{ tag.color }}">{{ tag }}</li>
+    <li class="tag {{ tag.color }}"><a href="{{ tag.get_absolute_url }}">{{ tag }}</a></li>
     {% endfor %}
 </ul>
 

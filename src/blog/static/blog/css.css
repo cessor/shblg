@@ -1,3 +1,81 @@
+@import url('fonts.css');
+
+* {
+    font-family: 'Open Sans';
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fredoka One';
+    font-weight: normal;
+    color: #333;
+}
+
+pre {
+    background-color: #f2f2f2;
+    padding: 1rem;
+    border-radius: 0.5em;
+    overflow: auto;
+}
+
+pre code {
+    font-family: 'Cousine';
+    color: #27272a;
+}
+
+p {
+    font-family: 'Open Sans';
+    line-height: 1.5rem;
+    color: #27272a;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding: 1rem;
+    margin: 0;
+    background-color: #6d695c;
+    background-image:
+    repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+    linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+    background-size: 70px 120px;
+}
+
+header h1 {
+    color: white;
+}
+
+nav {
+    border-bottom: 1em solid #6d695c;
+}
+
+nav ul li a {
+    font-family: 'Fredoka One', sans-serif;
+    font-weight: normal;
+    color: #333;
+    text-decoration: none;
+    padding: 0.3rem;
+    border: 1px solid white;
+    border-radius: 0.5em;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 1rem;
+}
+
+a {
+    color: #27272a;
+    text-decoration: underline;
+}
+
 ul.menu {
     margin: 0;
     padding: 0;
@@ -41,7 +119,32 @@ ul.tags {
 ul.tags li.tag {
     display: inline-block;
     margin: 0.25rem;
-    padding: 0.25rem;
+    padding: 0.25rem 0.5rem;
     border: 1px solid white;
     border-radius: 5px;
 }
+
+ul.tags li.tag a {
+    font-family: 'Fredoka One';
+    color: white;
+    text-shadow: 1px 1px 2px #27272a;
+    text-decoration: none;
+}
+
+ul.tags li.tag a:hover {
+    text-shadow: 2px 2px 4px #27272a;
+}
+
+.red {    background-color: #db2828; }
+.orange { background-color: #f2711c; }
+.yellow {  background-color: #fbbd08; }
+.olive {  background-color: #b5cc18; }
+.green {  background-color: #21ba45; }
+.teal {   background-color: #00b5ad; }
+.blue {   background-color: #2185d0; }
+.violet { background-color: #6435c9; }
+.purple { background-color: #a333c8; }
+.pink {   background-color: #e03997; }
+.brown {  background-color: #a5673f; }
+.gray {   background-color: #767676; }
+.black {  background-color: #1b1c1d; }
