@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.admin import UserAdmin
 
 from . import models
@@ -9,7 +10,7 @@ class AuthorAdmin(UserAdmin):
     def has_pgp_key(self, instance):
         return not not instance.pgp_public_key
     has_pgp_key.boolean = True
-
+    has_pgp_key.short_description = _('PGP-Key Hinterlegt?')
     fieldsets = UserAdmin.fieldsets + ((
         'PGP', {
             'fields': ('pgp_public_key',)

@@ -27,8 +27,8 @@ class Mismatch(VerificationFailed):
         raise NotImplementedError()
 
     def __init__(self, actual: str, expected: str):
-        self._actual = actual
-        self._expected = expected
+        self.actual = actual
+        self.expected = expected
         super().__init__(self._message())
 
 

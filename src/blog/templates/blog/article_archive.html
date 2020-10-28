@@ -5,7 +5,7 @@
 
 
 {% block content %}
-<h1>Artikel</h1>
+<h1>{% trans 'Archiv' %}</h1>
 {% regroup latest by published.year as years %}
 <ul class="archive">
     {% for year in years %}
