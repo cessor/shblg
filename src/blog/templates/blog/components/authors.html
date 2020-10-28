@@ -1,0 +1,19 @@
+{% load i18n %}
+<span class="authors">
+    {% trans 'Geschreiben von' %}
+    {% if article.authors.count == 1 %}
+        {# Geschrieben von Johannes. #}
+        <span class="author" >{{ article.authors.first.first_name }}</span>.
+    {% elif article.authors.count == 2 %}
+        {# Geschrieben von Johannes und Horst. #}
+        {% for author in article.authors.all %}
+            {% if forloop.last %} und {% endif %}<span class="author" >{{ author.first_name }}</span>{% if forloop.last %}.{% endif %}
+        {% endfor %}
+    {% else %}
+        {# Geschrieben von Johannes, Lars und Horst. #}
+        {% for author in article.authors.all %}
+            {% if forloop.last %} und {% endif %}
+            <span class="author" >{{ author.first_name }}</span>{% if not forloop.last and not forloop.revcounter0 == 1%}, {% endif %}{% if forloop.last %}.{% endif %}
+        {% endfor %}
+   {% endif %}
+</span>
