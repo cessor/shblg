@@ -4,15 +4,10 @@
 {% load i18n %}
 
 
-
 {% block title %}{{ tag }}| {% trans 'Thema' %}{% endblock %}
 
 
 {% block content %}
 <h1>{{ tag }}</h1>
-<ul class="articles">
-{% for article in tag.articles.all %}
-    <li class="article"><a href="{{ article.get_absolute_url }}">{{ article }}</a></li>
-{% endfor %}
-</ul>
+{% include 'blog/components/articles.html' with articles=tag.articles.all %}
 {% endblock %}

@@ -1,0 +1,4 @@
+{% load i18n %}
+{% if perms.blog.change_article %}
+    {% trans 'Oder du kannst die Artikel' %}&nbsp;<a href="{% url 'admin:blog_article_changelist' %}">{% trans 'im Backend' %}</a> betrachten.
+{% endif %}

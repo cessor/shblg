@@ -23,6 +23,11 @@ main section > header > h1 {
     font-size: 32pt;
 }
 
+main article img {
+    margin: 0 auto;
+    max-width: 100%;
+}
+
 .date-published {
     cursor: help;
 }
@@ -115,6 +120,7 @@ ul.menu {
     list-style: none;
     display: flex;
     flex-direction: row;
+    flex-wrap: : wrap;
     justify-content: center;
 }
 
@@ -147,6 +153,7 @@ ul.tags {
     list-style: none;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 ul.tags li.tag {
@@ -251,12 +258,14 @@ blockquote:after {
     }
 }
 
+/* Python */
+
 /* Operator */
 div.highlight pre span.o { }
 
 /* Keyword */
 div.highlight pre span.k,
-/* in-Keyword */
+/* Operator-Keyword */
 div.highlight pre span.ow { color: #2695FF; }
 
 /* Import */
@@ -281,7 +290,7 @@ div.highlight pre span.nc { color: #FF34D5; }
 div.highlight pre span.nf { color: #FF34D5; }
 
 /* Docstring */
-div.highlight pre span.sd { color: #2E2E8C; /*color: #4A4A75;*/ }
+div.highlight pre span.sd { color: #9494B0; /*color: #4A4A75; #2E2E8C; #77D*/ }
 
 /* Comment (1 line) */
 div.highlight pre span.c1 { color: #B4B4C2; /*color: #6D6D75;*/ }
@@ -303,22 +312,45 @@ div.highlight pre span.mi { color: #33AD11; /*#4AFF19 grün*/ }
 /* Magic Variable (e.g. __main__) */
 div.highlight pre span.vm { color: #00BBFE; }
 
-/*Ideas for later*/
-/*
-Rot:
-#FF3229
 
-Schraffur:
-background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 10px,
-    rgba(255,255,255,.5) 10px,
-    rgba(255,255,255,.5) 20px
-  );
-*/
+/* Javascript */
 
-/* Custom Environment */
+/* Keyword `function` */
+div.highlight pre span.kd,
+/* Keyword `const` */
+div.highlight pre span.kr { color: #2695FF; }
+
+/* Named function or object */
+div.highlight pre span.nx {  }
+
+/* JavaScript interpolated string  */
+div.highlight pre span.si,
+div.highlight pre span.sb { color: #FF854D; }
+
+/* Function declaration (e.g. `function` <Name>) */
+span.kd + span.nx { color: #FF34D5; }
+
+/* Ctor calls (e.g. `new` <Name>) */
+span.k + span.nx { color: #FF34D5; }
+
+
+/* HTML */
+
+/* Tag */
+div.highlight pre span.p,
+div.highlight pre span.nt { color: #2695FF; }
+
+/* Named Attribute */
+div.highlight pre span.na { color: #1BB3AD; }
+
+/* Attribute Value */
+div.highlight pre span.s { color: #FF854D; }
+
+/* HTML-Comment */
+div.highlight pre span.c { color: #B4B4C2; }
+
+
+/* Custom Environments */
 
 div.note {
     background-color: #FFFEE8;
@@ -330,3 +362,28 @@ div.note {
 div.note p {
     margin: 0;
 }
+
+
+div.caution {
+    background-color: #FFD8D6;
+    border: 2px solid #FF3229;
+    padding: 0.5em;
+    border-radius: 0.2em;
+}
+
+div.caution p {
+    margin: 0;
+}
+
+
+/*Ideas for later*/
+/*
+Schraffur:
+background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255,255,255,.5) 10px,
+    rgba(255,255,255,.5) 20px
+  );
+*/

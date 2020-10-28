@@ -174,7 +174,7 @@ class MultipartMessage:
             # Actual Content
             if (content_type == "text/plain"
                     and "attachment" not in content_disposition):
-                self._body = part.get_payload(decode=True)#.decode()
+                self._body = part.get_payload(decode=True).decode()
 
             # PGP Signature
             if (content_type == "application/pgp-signature"

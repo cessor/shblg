@@ -1,15 +1,17 @@
 from django.urls import path
 from django.views.generic import ListView, DetailView
 from django.views.generic import ArchiveIndexView
-from . import models
+from .models import Article, Author, Tag
 
 app_name = 'blog'
+
 
 urlpatterns = [
     path(
         route='thema',
         view=ListView.as_view(
-            model=models.Tag,
+            model=Tag,
+            get_queryset=Tag.with_articles.all,
             context_object_name='tags'
         ),
         name='tags'
@@ -17,7 +19,7 @@ urlpatterns = [
     path(
         route='thema/<slug:slug>',
         view=DetailView.as_view(
-            model=models.Tag,
+            model=Tag,
             context_object_name='tag'
         ),
         name='tag'
@@ -25,7 +27,7 @@ urlpatterns = [
     path(
         route='author/',
         view=ListView.as_view(
-            model=models.Author,
+            model=Author,
             context_object_name='authors'
         ),
         name='authors'
@@ -33,7 +35,7 @@ urlpatterns = [
     path(
         route='author/<int:pk>',
         view=DetailView.as_view(
-            model=models.Author,
+            model=Author,
             context_object_name='author'
         ),
         name='author'
@@ -41,7 +43,7 @@ urlpatterns = [
     path(
         route='archiv',
         view=ArchiveIndexView.as_view(
-            model=models.Article,
+            model=Article,
             date_field='published',
         ),
         name='archive'
@@ -49,7 +51,7 @@ urlpatterns = [
     path(
         route='<slug:slug>',
         view=DetailView.as_view(
-            model=models.Article,
+            model=Article,
             context_object_name='article'
         ),
         name='article'
@@ -57,8 +59,8 @@ urlpatterns = [
     path(
         route='',
         view=ListView.as_view(
-            model=models.Article,
-            context_object_name='articles'
+            model=Article,
+            context_object_name='articles',
         ),
         name='index'
     ),

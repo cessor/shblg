@@ -18,7 +18,7 @@
             {% trans 'Veröffentlicht ' %} <a title="{{ article.published}}">{{ article.published|naturalday }}</a>.
         </span>
         {% include 'blog/components/authors.html' %}
-        {% include 'blog/components/editorial.html' %}
+        {% include 'blog/components/edit_article.html' %}
     </small>
     <ul class="tags">
         {% for tag in article.tags.all %}

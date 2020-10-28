@@ -6,9 +6,11 @@
 
 {% block content %}
 <h1>{% trans 'Artikel' %}</h1>
-<ul class="articles">
-{% for article in articles %}
-    <li class="article"><a href="{{ article.get_absolute_url }}">{{ article }}</a></li>
-{% endfor %}
-</ul>
+<p>
+    <small>
+    {% include 'blog/components/add_article.html' %}
+    {% include 'blog/components/article_changelist.html' %}
+    </small>
+</p>
+{% include 'blog/components/articles.html' %}
 {% endblock %}

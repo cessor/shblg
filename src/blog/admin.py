@@ -41,4 +41,4 @@ class ArticleAdmin(admin.ModelAdmin):
 
     list_filter = ['authors', 'tags', 'created', 'updated']
 
-    list_display = ['title', 'author_display', 'created', 'updated']
+    list_display = ['title', 'author_display', 'created', 'updated', 'site']

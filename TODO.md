@@ -3,12 +3,22 @@ Todo
  - [x] Syntax Highlighting- Pygment
  - [x] Bearbeiten - Link
  - [x] Autoren-Bio
- - Tags: Weniger Farbe
- - Besserer header
- - User Pics
- - Bilder
- - Email: Verify Signature
- - Email: Add test flag
- - Environments ```note``` oder ```caution``` (html renderer in mistune)
- - Markdown Editor
+ - [x] Themenliste flexwrap
+ - [x] Themenliste zeigt nur Themen die auch Artikel haben
+ - [x] Menu flexwrap
+ - [x] Themen: weniger Farbe
+ - [x] Environment ```note```
+ - [x] Bilder sollten responsive eingebunden werden
+ - [x] Environment ```caution```
+ - [x] Site in den List-Fields des Article-Admin anzeigen
+ - [x] Docstring css anpassen
+ - [x] Highlighting für JavaScript und HTML
+ - [ ] Admin-Links um Artikel hinzuzufügen
+ - [ ] Besserer header
+ - [ ] User Pics
+ - [ ] Bilder per Email
+ - [ ] Email: Verify Signature
+ - [ ] Email import: Schalter um Verschieben zu vermeiden
+ - [ ] Markdown-On-Site Editor
+ - [ ] Nur Artikel der Site aktuellen Site anzeigen
 

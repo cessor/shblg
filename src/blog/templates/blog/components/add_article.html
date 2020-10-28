@@ -1,0 +1,4 @@
+{% load i18n %}
+{% if perms.blog.add_article %}
+    {% trans 'Du kannst einen neuen Artikel' %}&nbsp;<a href="{% url 'admin:blog_article_add' %}">{% trans 'verfassen' %}</a>.
+{% endif %}

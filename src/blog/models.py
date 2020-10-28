@@ -1,11 +1,12 @@
 from django.conf import settings
-from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.apps import AuthConfig
+from django.contrib.auth.models import AbstractUser
+from django.contrib.sites.managers import CurrentSiteManager
 from django.db import models
-from django.utils.text import slugify as slugify
-from django.utils import timezone
-from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
+from django.utils import timezone
+from django.utils.text import slugify as slugify
+from django.utils.translation import gettext_lazy as _
 
 
 class Sluggable:
@@ -90,7 +91,20 @@ class Color:
         return cls(Color.COLORS[index])
 
 
+class TaggedArticleManager(models.Manager):
+    def get_queryset(self):
+        return (
+            super()
+            .get_queryset()
+            .annotate(n_articles=models.Count('articles'))
+            .filter(n_articles__gt=0)
+        )
+
+
 class Tag(Sluggable, models.Model):
+    objects = models.Manager()
+    with_articles = TaggedArticleManager()
+
     SLUGIFY_FIELD = 'tag'
 
     tag = models.CharField(
@@ -119,6 +133,9 @@ class Tag(Sluggable, models.Model):
 
 
 class Article(Sluggable, models.Model):
+    objects = models.Manager()
+    on_site = CurrentSiteManager()
+
     SLUGIFY_FIELD = 'title'
 
     site = models.ForeignKey(
