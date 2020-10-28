@@ -23,6 +23,13 @@ main section > header > h1 {
     font-size: 32pt;
 }
 
+main article code {
+    font-family: 'Cousine';
+    background-color: #f4f4f4;
+    border-radius: 0.2em;
+    padding: 0.2em 0.3em;
+}
+
 main article img {
     margin: 0 auto;
     max-width: 100%;
