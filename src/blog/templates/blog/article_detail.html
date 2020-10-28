@@ -5,7 +5,7 @@
 
 
 
-{% block title %}{{ article.title }}| Artikel{% endblock %}
+{% block title %}{{ article.title }} | {% trans 'Artikel' %}{% endblock %}
 
 
 {% block content %}
@@ -18,14 +18,13 @@
             {% trans 'Veröffentlicht ' %} <a title="{{ article.published}}">{{ article.published|naturalday }}</a>.
         </span>
         {% include 'blog/components/authors.html' %}
+        {% include 'blog/components/editorial.html' %}
     </small>
-
     <ul class="tags">
         {% for tag in article.tags.all %}
         <li class="tag {{ tag.color }}"><a href="{{ tag.get_absolute_url }}">{{ tag }}</a></li>
         {% endfor %}
     </ul>
-
     {{ article.content|markdown|safe }}
 </article>
 {% endblock %}

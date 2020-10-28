@@ -1,0 +1,14 @@
+{% extends 'blog/_layout.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Autoren' %}{% endblock %}
+
+
+{% block content %}
+<h1>{% trans 'Autoren' %}</h1>
+<ul class="authors">
+{% for author in authors %}
+    <li class="author"><a href="{{ author.get_absolute_url }}">{{ author.first_name }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

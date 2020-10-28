@@ -23,6 +23,22 @@ urlpatterns = [
         name='tag'
     ),
     path(
+        route='author/',
+        view=ListView.as_view(
+            model=models.Author,
+            context_object_name='authors'
+        ),
+        name='authors'
+    ),
+    path(
+        route='author/<int:pk>',
+        view=DetailView.as_view(
+            model=models.Author,
+            context_object_name='author'
+        ),
+        name='author'
+    ),
+    path(
         route='archiv',
         view=ArchiveIndexView.as_view(
             model=models.Article,

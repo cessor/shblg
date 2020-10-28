@@ -4,6 +4,8 @@
 Pink: #FF34D5
 Purple: #5A23E8
 Blau: #0F8FFF
+Light Gray: #f2f2f2;
+Text: #27272a;
 */
 
 * {
@@ -16,7 +18,8 @@ h1, h2, h3, h4, h5, h6, main article > header > h1 {
     color: #5A23E8;
 }
 
-main article > header > h1 {
+main article > header > h1,
+main section > header > h1 {
     font-size: 32pt;
 }
 
@@ -24,11 +27,21 @@ main article > header > h1 {
     cursor: help;
 }
 
-pre {
-    background-color: #f2f2f2;
+pre, div.highlight pre {
+    background-color: #f4f4f4;
     padding: 1rem;
     border-radius: 0.2em;
     overflow: auto;
+}
+
+div.highlight pre, div.highlight pre > * {
+    font-family: 'Cousine';
+    color: #27272a;
+}
+
+div.highlight pre {
+    display: block;
+    line-height: 1.38em;
 }
 
 pre code {
@@ -40,6 +53,10 @@ p {
     font-family: 'Open Sans';
     line-height: 1.5rem;
     color: #27272a;
+}
+
+ul li {
+    line-height: 1.5rem;
 }
 
 body {
@@ -66,11 +83,13 @@ body > header > h1 {
 
 nav ul li a {
     font-weight: normal;
-    color: #333;
+    color: #67676a;
     text-decoration: none;
     padding: 0.3rem;
     border: 1px solid white;
     border-radius: 0.5em;
+    text-transform: uppercase;
+    font-family: "Asap Condensed";
 }
 
 nav ul li a:hover {
@@ -108,9 +127,22 @@ ul.menu li.menuitem {
     margin: 1em;
 }
 
+ul.articles,
+ul.authors {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.articles li:before,
+ul.authors li:before {
+    content: '\2013';
+    margin: 0 1em;
+}
+
 ul.tags {
     font-size: smaller;
-    margin: 0;
+    margin: 1em 0 0 0;
     padding: 0;
     list-style: none;
     display: flex;
@@ -127,13 +159,47 @@ ul.tags li.tag {
 
 ul.tags li.tag a {
     color: white;
-    text-shadow: 1px 1px 2px #47474a;
+    font-weight: bolder;
     text-decoration: none;
 }
 
 ul.tags li.tag a:hover {
     text-shadow: 2px 2px 4px #27272a;
 }
+
+/*                          Pink        Pink Scale   Sementic RGB */
+.red {    background-color: #FF34D5; /* #80196B;     #db2828;     */ }
+.orange { background-color: #FF34D5; /* #FF80E5;     #f2711c;     */ }
+.yellow { background-color: #FF34D5; /* #804073;     #fbbd08;     */ }
+.olive {  background-color: #FF34D5; /* #FF34D5;     #b5cc18;     */ }
+.green {  background-color: #FF34D5; /* #CC29AB;     #21ba45;     */ }
+.teal {   background-color: #FF34D5; /* #954A86;     #00b5ad;     */ }
+.blue {   background-color: #FF34D5; /* #CC29AB;     #2185d0;     */ }
+.violet { background-color: #FF34D5; /* #CC66B8;     #6435c9;     */ }
+.purple { background-color: #FF34D5; /* #4D0F40;     #a333c8;     */ }
+.pink {   background-color: #FF34D5; /* #D56ABF;     #e03997;     */ }
+.brown {  background-color: #FF34D5; /* #4D0F40;     #a5673f;     */ }
+.gray {   background-color: #FF34D5; /* #4D2645;     #767676;     */ }
+.black {  background-color: #FF34D5; /* #991F81;     #1b1c1d;     */ }
+
+ul.archive {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+ul.archive li.year h2 {
+    border-bottom: 1px solid #5A23E8;
+}
+
+ul.archive li.year ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
 
 blockquote {
     display: inline-block;
@@ -177,21 +243,6 @@ blockquote:after {
     vertical-align: top;
 }
 
-.red {    background-color: #db2828; }
-.orange { background-color: #f2711c; }
-.yellow { background-color: #fbbd08; }
-.olive {  background-color: #b5cc18; }
-.green {  background-color: #21ba45; }
-.teal {   background-color: #00b5ad; }
-.blue {   background-color: #2185d0; }
-.violet { background-color: #6435c9; }
-.purple { background-color: #a333c8; }
-.pink {   background-color: #e03997; }
-.brown {  background-color: #a5673f; }
-.gray {   background-color: #767676; }
-.black {  background-color: #1b1c1d; }
-
-
 @media only screen and (min-width: 1224px){
     main {
         max-width: 48%;
@@ -199,3 +250,70 @@ blockquote:after {
         text-align: left;
     }
 }
+
+/* Operator */
+div.highlight pre span.o { }
+
+/* Keyword */
+div.highlight pre span.k,
+/* in-Keyword */
+div.highlight pre span.ow { color: #2695FF; }
+
+/* Import */
+div.highlight pre span.kn { color: #2695FF;}
+
+/* Module Name */
+div.highlight pre span.nn { color: #FF34D5; }
+
+/* Named Decorator */
+div.highlight pre span.nd { color: #1BB3AD; }
+
+/* Named builtin */
+div.highlight pre span.nb { color: #2695FF; }
+
+/* Dunder */
+div.highlight pre span.fm { color: #00BBFE; }
+
+/* Named Class */
+div.highlight pre span.nc { color: #FF34D5; }
+
+/* Named Function */
+div.highlight pre span.nf { color: #FF34D5; }
+
+/* Docstring */
+div.highlight pre span.sd { color: #2E2E8C; /*color: #4A4A75;*/ }
+
+/* Comment (1 line) */
+div.highlight pre span.c1 { color: #B4B4C2; /*color: #6D6D75;*/
+}
+
+/* Self */ div.highlight pre span.bp { color: #B31292; }
+
+/* String, Single Quoted */
+div.highlight pre span.s1,
+/* String, Douple Quoted */
+div.highlight pre span.s2 { color: #FF854D;
+    /*color: #FFBC4D;*/
+    /*color: #E88F3A;*/
+}
+
+/* Int Literal */
+div.highlight pre span.mi { color: #33AD11; /*#4AFF19 grün*/ }
+
+/* Magic Variable (e.g. __main__) */
+div.highlight pre span.vm { color: #00BBFE; }
+
+/*Ideas for later*/
+/*
+Rot:
+#FF3229
+
+Schraffur:
+background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255,255,255,.5) 10px,
+    rgba(255,255,255,.5) 20px
+  );
+*/

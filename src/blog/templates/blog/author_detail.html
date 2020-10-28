@@ -1,0 +1,22 @@
+{% extends 'blog/_layout.html' %}
+{% load markdown %}
+{% load i18n %}
+
+
+
+{% block title %}{{ author.first_name }} | {% trans 'Autor' %}{% endblock %}
+
+
+{% block content %}
+<section>
+<header>
+    <h1>{% trans 'Über' %}&nbsp;{{ author.first_name }}</h1>
+</header>
+{% if author.biography %}
+{{ author.biography|markdown|safe }}
+{% endif %}
+
+<h2>{% trans 'Artikel von' %}&nbsp;{{ author.first_name}}</h2>
+{% include 'blog/components/articles.html' with articles=author.articles.all %}
+</section>
+{% endblock %}

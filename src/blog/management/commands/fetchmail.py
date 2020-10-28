@@ -70,7 +70,7 @@ class SignatureMismatch(Mismatch):
     def _message(self):
         return (
             f'The provided signature was created by a key with the fingerprint '
-            f'{self.actual} and did not match the authors configured public key '
+            f'{self.actual} and did not match the author\'s configured public key '
             f'{self.expected}. This email was likely sent by someone else who '
             f'is not the author and will therefore be rejected.'
         )
@@ -80,7 +80,7 @@ class PublicKeyMismatch(Mismatch):
     def _message(self):
         return (
             f'The attached public key {self.actual} did not match the '
-            f'authors configured public key {self.expected}. '
+            f'author\'s configured public key {self.expected}. '
             f'This email was likely sent by someone else who '
             f'is not the author and will therefore be rejected.'
         )
@@ -140,12 +140,12 @@ class MultipartMessage:
 
         attached_signature = pgpy.PGPSignature()
         attached_signature.parse(self._signature)
-
+        # TODO: Fucking verify
         # Verify signature
         if not (attached_signature.signer_fingerprint == expected_public_key.fingerprint):
             raise SignatureMismatch(
-                expected_public_key.fingerprint,
-                attached_signature.signer_fingerprint
+                actual=attached_signature.signer_fingerprint,
+                expected=expected_public_key.fingerprint
             )
 
         # Optional: If a public key was attached, verify it for good measure
@@ -156,8 +156,8 @@ class MultipartMessage:
             # Verify public Key
             if not expected_public_key.fingerprint == attached_pub_key.fingerprint:
                 raise PublicKeyMismatch(
-                    expected_public_key,
-                    attached_pub_key
+                    actual=attached_pub_key.fingerprint,
+                    expected=expected_public_key.fingerprint
                 )
 
         return VerifiedMessage(
@@ -174,7 +174,7 @@ class MultipartMessage:
             # Actual Content
             if (content_type == "text/plain"
                     and "attachment" not in content_disposition):
-                self._body = part.get_payload(decode=True).decode()
+                self._body = part.get_payload(decode=True)#.decode()
 
             # PGP Signature
             if (content_type == "application/pgp-signature"

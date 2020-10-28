@@ -11,11 +11,7 @@
     {% for year in years %}
     <li class="year">
         <h2>{{ year.grouper }}</h2>
-        <ul class="articles">
-            {% for article in year.list %}
-            <li class="article"><a href="{{ article.get_absolute_url }}">{{ article }}</a></li>
-            {% endfor %}
-        </ul>
+        {% include 'blog/components/articles.html' with articles=year.list %}
     </li>
     {% endfor %}
 </ul>

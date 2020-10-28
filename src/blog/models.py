@@ -32,9 +32,19 @@ class Author(AbstractUser):
         blank=True
     )
 
+    biography = models.TextField(
+        verbose_name=_('Biografie'),
+        null=True,
+        blank=True,
+        help_text=_('Unterstützt Markdown-Syntax')
+    )
+
     class Meta:
         verbose_name = _('Autor')
         verbose_name_plural = _('Autoren')
+
+    def get_absolute_url(self):
+        return reverse('blog:author', args=[self.id])
 
 
 class Color:
