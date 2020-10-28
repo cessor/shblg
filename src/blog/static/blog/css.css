@@ -1,19 +1,29 @@
 @import url('fonts.css');
 
+/*
+Pink: #FF34D5
+Purple: #5A23E8
+Blau: #0F8FFF
+*/
+
 * {
     font-family: 'Open Sans';
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Fredoka One';
+h1, h2, h3, h4, h5, h6, main article > header > h1 {
+    font-family: 'Asap Condensed';
     font-weight: normal;
-    color: #333;
+    color: #5A23E8;
+}
+
+main article > header > h1 {
+    font-size: 32pt;
 }
 
 pre {
     background-color: #f2f2f2;
     padding: 1rem;
-    border-radius: 0.5em;
+    border-radius: 0.2em;
     overflow: auto;
 }
 
@@ -33,28 +43,24 @@ body {
     padding: 0;
 }
 
-header {
+body > header {
     padding: 1rem;
     margin: 0;
-    background-color: #6d695c;
+    background-color: #FF34D5;
     background-image:
-    repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
-    repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(120deg, rgba(255,255,255,.3), rgba(255,255,255,.3) 2px, transparent 2px, transparent 60px),
+    repeating-linear-gradient(60deg, rgba(255,255,255,.3), rgba(255,255,255,.3) 2px, transparent 2px, transparent 60px),
     linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
     linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
     background-size: 70px 120px;
 }
 
-header h1 {
+body > header > h1 {
     color: white;
-}
-
-nav {
-    border-bottom: 1em solid #6d695c;
+    text-shadow: 1px 1px 3px #47474a;
 }
 
 nav ul li a {
-    font-family: 'Fredoka One', sans-serif;
     font-weight: normal;
     color: #333;
     text-decoration: none;
@@ -72,7 +78,11 @@ main {
 }
 
 a {
-    color: #27272a;
+    color: #FF34D5;
+    text-decoration: none;
+}
+
+a:hover {
     text-decoration: underline;
 }
 
@@ -94,21 +104,8 @@ ul.menu li.menuitem {
     margin: 1em;
 }
 
-ul.authors {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-}
-
-ul.authors li.author {
-    display: inline-block;
-    color: #aaa;
-    margin-right: 1em;
-}
-
 ul.tags {
+    font-size: smaller;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -125,9 +122,8 @@ ul.tags li.tag {
 }
 
 ul.tags li.tag a {
-    font-family: 'Fredoka One';
     color: white;
-    text-shadow: 1px 1px 2px #27272a;
+    text-shadow: 1px 1px 2px #47474a;
     text-decoration: none;
 }
 
@@ -135,9 +131,51 @@ ul.tags li.tag a:hover {
     text-shadow: 2px 2px 4px #27272a;
 }
 
+blockquote {
+    display: inline-block;
+    padding-left: 1em;
+    margin-left: 1em;
+}
+
+blockquote, blockquote p {
+    font-family: 'Kalam';
+    font-size:  larger;
+    color: #797979;
+}
+
+blockquote p {
+    margin: 0 0.2em;
+    padding: 0;
+}
+
+blockquote:before {
+    content: "\201C";
+    display: block;
+    font-size: 32pt;
+    height: 18pt;
+    margin: 0;
+    margin-left: -0.5em;
+    padding: 0;
+    text-align: left;
+    vertical-align: top;
+}
+
+blockquote:after {
+    content: "\201D";
+    display: block;
+    font-size: 32pt;
+    height: 18pt;
+    margin: 0;
+    margin-top: -0.3em;
+    margin-right: -0.5em;
+    padding: 0;
+    text-align: right;
+    vertical-align: top;
+}
+
 .red {    background-color: #db2828; }
 .orange { background-color: #f2711c; }
-.yellow {  background-color: #fbbd08; }
+.yellow { background-color: #fbbd08; }
 .olive {  background-color: #b5cc18; }
 .green {  background-color: #21ba45; }
 .teal {   background-color: #00b5ad; }
