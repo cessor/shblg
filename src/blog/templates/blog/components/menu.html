@@ -1,0 +1,6 @@
+{% load i18n %}
+<ul class="menu">
+    <li class="menuitem"><a href="{% url 'blog:index' %}">{% trans 'Artikel' %}</a></li>
+    <li class="menuitem"><a href="{% url 'blog:tags' %}">{% trans 'Themen' %}</a></li>
+    <li class="menuitem"><a href="{% url 'blog:archive' %}">{% trans 'Archiv' %}</a></li>
+</ul>

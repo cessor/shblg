@@ -1,11 +1,11 @@
 {% extends 'blog/_layout.html' %}
+{% load i18n %}
 
-
-{% block title %}Tags{% endblock %}
+{% block title %}Themen{% endblock %}
 
 
 {% block content %}
-<h1>Tags</h1>
+<h1>{% trans 'Themen' %}</h1>
 <ul class="tags">
 {% for tag in tags %}
     <li class="tag {{ tag.color }}"><a href="{{ tag.get_absolute_url }}">{{ tag }}</a></li>

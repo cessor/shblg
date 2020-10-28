@@ -1,0 +1,22 @@
+{% extends 'blog/_layout.html' %}
+
+
+{% block title %}Artikel{% endblock %}
+
+
+{% block content %}
+<h1>Artikel</h1>
+{% regroup latest by published.year as years %}
+<ul class="archive">
+    {% for year in years %}
+    <li class="year">
+        <h2>{{ year.grouper }}</h2>
+        <ul class="articles">
+            {% for article in year.list %}
+            <li class="article"><a href="{{ article.get_absolute_url }}">{{ article }}</a></li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

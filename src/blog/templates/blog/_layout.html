@@ -17,10 +17,7 @@
             <h1>Schneider &amp; Hofmeister IT</h1>
         </header>
         <nav>
-            <ul class="menu">
-                <li class="menuitem"><a href="{% url 'blog:index' %}">{% trans 'Artikel' %}</a></li>
-                <li class="menuitem"><a href="{% url 'blog:tags' %}">{% trans 'Tags' %}</a></li>
-            </ul>
+            {% include 'blog/components/menu.html' %}
         </nav>
         <main>
         {% block content %}{% endblock %}

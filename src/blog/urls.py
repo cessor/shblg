@@ -1,13 +1,13 @@
 from django.urls import path
 from django.views.generic import ListView, DetailView
-
+from django.views.generic import ArchiveIndexView
 from . import models
 
 app_name = 'blog'
 
 urlpatterns = [
     path(
-        route='tag',
+        route='thema',
         view=ListView.as_view(
             model=models.Tag,
             context_object_name='tags'
@@ -15,12 +15,20 @@ urlpatterns = [
         name='tags'
     ),
     path(
-        route='tag/<slug:slug>',
+        route='thema/<slug:slug>',
         view=DetailView.as_view(
             model=models.Tag,
             context_object_name='tag'
         ),
         name='tag'
+    ),
+    path(
+        route='archiv',
+        view=ArchiveIndexView.as_view(
+            model=models.Article,
+            date_field='published',
+        ),
+        name='archive'
     ),
     path(
         route='<slug:slug>',
