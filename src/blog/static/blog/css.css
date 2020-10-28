@@ -284,10 +284,10 @@ div.highlight pre span.nf { color: #FF34D5; }
 div.highlight pre span.sd { color: #2E2E8C; /*color: #4A4A75;*/ }
 
 /* Comment (1 line) */
-div.highlight pre span.c1 { color: #B4B4C2; /*color: #6D6D75;*/
-}
+div.highlight pre span.c1 { color: #B4B4C2; /*color: #6D6D75;*/ }
 
-/* Self */ div.highlight pre span.bp { color: #B31292; }
+/* Self */
+div.highlight pre span.bp { color: #B31292; }
 
 /* String, Single Quoted */
 div.highlight pre span.s1,
@@ -317,3 +317,22 @@ background-image: repeating-linear-gradient(
     rgba(255,255,255,.5) 20px
   );
 */
+
+/* Custom Environment */
+
+div.note {
+    background-color: #FFFEE8;
+    border: 2px solid #FFD21C;
+    padding: 0.5em;
+    border-radius: 0.2em;
+}
+
+div.note p {
+    margin: 0;
+}
+
+div.note h1,
+div.note h2,
+div.note h3 {
+
+}
