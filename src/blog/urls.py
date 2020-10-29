@@ -61,6 +61,7 @@ urlpatterns = [
         view=ListView.as_view(
             model=Article,
             context_object_name='articles',
+            get_queryset=Article.chronological.all
         ),
         name='index'
     ),

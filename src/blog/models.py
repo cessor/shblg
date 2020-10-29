@@ -135,8 +135,14 @@ class Tag(Sluggable, models.Model):
         return str(self.tag)
 
 
+class ChronologicalManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().order_by('-published')
+
+
 class Article(Sluggable, models.Model):
     objects = models.Manager()
+    chronological = ChronologicalManager()
     on_site = CurrentSiteManager()
 
     SLUGIFY_FIELD = 'title'
