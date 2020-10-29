@@ -1,3 +1,5 @@
+import re
+import textwrap
 from django.conf import settings
 from django.contrib.auth.apps import AuthConfig
 from django.contrib.auth.models import AbstractUser
@@ -8,6 +10,7 @@ from django.utils import timezone
 from django.utils.text import slugify as slugify
 from django.utils.translation import gettext_lazy as _
 
+import mistune
 
 class Sluggable:
     SLUGIFY_FIELD = ''
@@ -195,6 +198,19 @@ class Article(Sluggable, models.Model):
         auto_now=True
     )
 
+    @property
+    def summary(self):
+        html = mistune.markdown(str(self.content))
+        text_without_breaks = ''.join(
+            (c if c not in '\n\r\t' else ' ')
+            for c in re.sub(r'<(.*?)>', '', html).strip()
+        )
+        return textwrap.shorten(
+            text_without_breaks,
+            width=255,
+            placeholder='...'
+        )
+
     def get_absolute_url(self):
         return reverse('blog:article', args=[self.slug])
 
@@ -204,3 +220,7 @@ class Article(Sluggable, models.Model):
     class Meta:
         verbose_name = _('Artikel')
         verbose_name_plural = _('Artikel')
+
+
+
+

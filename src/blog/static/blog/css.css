@@ -146,7 +146,8 @@ ul.menu li.menuitem {
 }
 
 ul.articles,
-ul.authors {
+ul.authors,
+ul.summaries {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -157,6 +158,31 @@ ul.authors li:before {
     content: '\2013';
     margin: 0 1em;
 }
+
+
+/*h1, h2, h3, h4, h5, h6, main article > header > h1 {
+
+}
+
+main article > header > h1,
+main section > header > h1 {
+    font-size: 32pt;
+
+}*/
+
+ul.summaries li.summary {
+    padding: 1em 0;
+    border-bottom: 1px solid #FF34D5;
+}
+
+ul.summaries li.summary h1 a {
+    font-family: 'Asap Condensed';
+    font-weight: normal;
+    color: #5A23E8;
+    font-size: 32pt;
+}
+
+
 
 ul.tags {
     font-size: smaller;
