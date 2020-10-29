@@ -23,11 +23,20 @@ Todo
  - [x] Purple accent color is too  blueish -- replaced
  - [x] Darkmode design
  - [x] Hyphenation in titles
- - [ ] Darkmode with CSS cookie
+ - [x] Sticky zieht auf Mobilgeräten nach
+ - [x] Autoren werden alphabetisch ausgegeben
+ - [ ] Darkmode durch CSS cookie enablen
  - [ ] User Pics
+ - [ ] Bilder-Upload
+ - [ ] Bilder-Manager: Crop-Funktion fürs Layout
+ - [ ] Super Fancy Header: Flickering Animation der Dreiecke?
  - [ ] Bilder per Email
  - [ ] Email: Verify Signature
  - [ ] Email import: Schalter um Verschieben zu vermeiden
  - [ ] Markdown-On-Site Editor
- - [ ] Nur Artikel der Site aktuellen Site anzeigen
- - [ ] Sticky bar is rubbery on mobile
+ - [ ] Nur Artikel der aktuellen Site anzeigen
+ - [ ] Autoren mit Gesicht anzeigen
+ - [ ] Email-API dokumentieren
+ - [ ] Übersetzung
+ - [ ] Impressum
+

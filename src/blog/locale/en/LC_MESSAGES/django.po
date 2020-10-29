@@ -1,0 +1,150 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-29 12:25+0100\n"
+"PO-Revision-Date: 2020-10-29 12:31+0100\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.4.1\n"
+
+#: .\blog\admin.py:13
+msgid "PGP-Key Hinterlegt?"
+msgstr "PGP-Key available?"
+
+#: .\blog\admin.py:16 .\blog\models.py:40
+msgid "Biografie"
+msgstr "Biography"
+
+#: .\blog\admin.py:20
+msgid "PGP"
+msgstr "PGP"
+
+#: .\blog\models.py:34
+msgid "Öffentlicher PGP-Schlüssel"
+msgstr "PGP Public Key"
+
+#: .\blog\models.py:43 .\blog\models.py:174
+msgid "Unterstützt Markdown-Syntax"
+msgstr "Markdown syntax supported."
+
+#: .\blog\models.py:47 .\blog\templates\blog\author_detail.html:7
+msgid "Autor"
+msgstr "Author"
+
+#: .\blog\models.py:48 .\blog\models.py:179
+#: .\blog\templates\blog\author_list.html:4
+#: .\blog\templates\blog\author_list.html:8
+#: .\blog\templates\blog\components\menu.html:6
+msgid "Autoren"
+msgstr "Authors"
+
+#: .\blog\models.py:126 .\blog\models.py:169
+msgid "Freilassen, um Slug aus dem Titel zu generieren"
+msgstr "Clear to generate slug from the title"
+
+#: .\blog\models.py:160
+msgid "Titel"
+msgstr "Title"
+
+#: .\blog\models.py:173
+msgid "Inhalt"
+msgstr "Content"
+
+#: .\blog\models.py:186
+msgid "Tags"
+msgstr "Tags"
+
+#: .\blog\models.py:192
+msgid "Veröffentlicht am"
+msgstr "Published"
+
+#: .\blog\models.py:199
+msgid "Erstellt am"
+msgstr "Created"
+
+#: .\blog\models.py:204
+msgid "Geändert am"
+msgstr "Updated"
+
+#: .\blog\models.py:228 .\blog\models.py:229
+#: .\blog\templates\blog\article_detail.html:7
+#: .\blog\templates\blog\components\menu.html:3
+msgid "Artikel"
+msgstr "Article"
+
+#: .\blog\templates\blog\article_archive.html:4
+#: .\blog\templates\blog\article_archive.html:8
+#: .\blog\templates\blog\components\menu.html:5
+msgid "Archiv"
+msgstr "Archive"
+
+#: .\blog\templates\blog\article_archive.html:20
+#: .\blog\templates\blog\article_list.html:27
+#: .\blog\templates\blog\components\articles.html:9
+msgid "Bisher wurden noch keine Artikel verfasst..."
+msgstr "No articles have been written, yet..."
+
+#: .\blog\templates\blog\author_detail.html:13
+msgid "Über"
+msgstr "About"
+
+#: .\blog\templates\blog\author_detail.html:20
+msgid "Artikel von"
+msgstr "Articles by"
+
+#: .\blog\templates\blog\components\add_article.html:3
+msgid "Du kannst einen neuen Artikel"
+msgstr ""
+
+#: .\blog\templates\blog\components\add_article.html:3
+msgid "verfassen"
+msgstr ""
+
+#: .\blog\templates\blog\components\article_changelist.html:3
+msgid "Oder du kannst die Artikel"
+msgstr ""
+
+#: .\blog\templates\blog\components\article_changelist.html:3
+msgid "im Backend"
+msgstr ""
+
+#: .\blog\templates\blog\components\authors.html:4
+msgid "Geschrieben von"
+msgstr "Written by"
+
+#: .\blog\templates\blog\components\date.html:4
+msgid "Veröffentlicht "
+msgstr "Published"
+
+#: .\blog\templates\blog\components\edit_article.html:3
+msgid "Du kannst diesen Artikel"
+msgstr ""
+
+#: .\blog\templates\blog\components\edit_article.html:3
+msgid "bearbeiten"
+msgstr "edit"
+
+#: .\blog\templates\blog\components\menu.html:4
+#: .\blog\templates\blog\tag_list.html:4 .\blog\templates\blog\tag_list.html:8
+msgid "Themen"
+msgstr "Topics"
+
+#: .\blog\templates\blog\tag_detail.html:7
+msgid "Thema"
+msgstr "Topic"
+
+#: .\blog\templates\blog\tag_list.html:15
+#: .\blog\templates\blog\tag_list.html:20
+msgid "Bisher gibt es noch keine Themen..."
+msgstr "No topics available..."

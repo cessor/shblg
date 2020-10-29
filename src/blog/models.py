@@ -46,6 +46,7 @@ class Author(AbstractUser):
     class Meta:
         verbose_name = _('Autor')
         verbose_name_plural = _('Autoren')
+        ordering = ['first_name']
 
     def get_absolute_url(self):
         return reverse('blog:author', args=[self.id])
