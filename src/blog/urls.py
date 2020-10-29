@@ -53,6 +53,7 @@ urlpatterns = [
         view=ArchiveIndexView.as_view(
             model=Article,
             date_field='published',
+            allow_empty = True
         ),
         name='archive'
     ),

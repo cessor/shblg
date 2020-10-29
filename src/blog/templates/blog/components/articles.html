@@ -1,5 +1,10 @@
-<ul class="articles">
-{% for article in articles %}
-    <li class="article"><a href="{{ article.get_absolute_url }}">{{ article }}</a></li>
-{% endfor %}
+{% load i18n %}
+{% if articles %}
+    <ul class="articles">
+    {% for article in articles %}
+        <li class="article"><a href="{{ article.get_absolute_url }}">{{ article }}</a></li>
+    {% endfor %}
 </ul>
+{% else %}
+    <p>{% trans 'Bisher wurden noch keine Artikel verfasst...' %}</p>
+{% endif %}

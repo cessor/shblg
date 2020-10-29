@@ -23,6 +23,8 @@
             {{ article.summary|safe }}
         </p>
     </li>
+{% empty %}
+    {% trans 'Bisher wurden noch keine Artikel verfasst...' %}
 {% endfor %}
 </ul>
 {% endblock %}

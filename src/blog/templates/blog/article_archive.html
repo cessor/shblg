@@ -6,13 +6,17 @@
 
 {% block content %}
 <h1>{% trans 'Archiv' %}</h1>
-{% regroup latest by published.year as years %}
-<ul class="archive">
-    {% for year in years %}
-    <li class="year">
-        <h2>{{ year.grouper }}</h2>
-        {% include 'blog/components/articles.html' with articles=year.list %}
-    </li>
-    {% endfor %}
-</ul>
+{% if latest %}
+    {% regroup latest by published.year as years %}
+    <ul class="archive">
+        {% for year in years %}
+        <li class="year">
+            <h2>{{ year.grouper }}</h2>
+            {% include 'blog/components/articles.html' with articles=year.list %}
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    {% trans 'Bisher wurden noch keine Artikel verfasst...' %}
+{% endif %}
 {% endblock %}
