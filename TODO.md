@@ -30,3 +30,4 @@ Todo
  - [ ] Email import: Schalter um Verschieben zu vermeiden
  - [ ] Markdown-On-Site Editor
  - [ ] Nur Artikel der Site aktuellen Site anzeigen
+ - [ ] Sticky bar is rubbery on mobile
