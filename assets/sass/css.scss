@@ -9,86 +9,45 @@ $font-text: 'Open Sans';
 $font-headline: 'Asap Condensed';
 $font-handwriting: 'Kalam';
 
+$border-radius: 0.3rem;
+
+@mixin rounded () {
+    border-radius: $border-radius;
+}
+
+@mixin shadow ($color-shadow: $color-boxshadow) {
+    /*offset-x | offset-y | blur-radius | spread-radius | color */
+    box-shadow: 0px 4px 14px 0px $color-shadow;
+}
+
+@mixin noshadow () {
+    box-shadow: none;
+}
+
+@mixin hatching() {
+    /* Hatching (Englisch: Schraffur) */
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255,255,255,.5) 10px,
+        rgba(255,255,255,.5) 20px
+    );
+}
+
+
 * {
     font-family: $font-text;
 }
 
 body {
+    margin: 0;
+    padding: 0;
     background-color: $color-body-bg;
     background-image: $bg-image;
     background-repeat: no-repeat;
     background-position: top -50px right -50px;
     background-size: 75%;
-}
-
-h1, h2, h3, h4, h5, h6, main article > header > h1 {
-    font-family: $font-headline;
-    font-weight: normal;
-    color: $color-heavy;
-    hyphens: auto;
-}
-
-main article > header > h1,
-main section > header > h1 {
-    font-size: 32pt;
-}
-
-main article code {
-    font-family: $font-code;
-    background-color: $color-code-bg;
-    border-radius: 0.2em;
-    padding: 0.2em 0.3em;
-}
-
-main img {
-    margin: 0 auto;
-    max-width: 100%;
-}
-
-article header + small,
-h1 + small {
-    color: $color-text;
-}
-
-.date-published {
-    cursor: help;
-}
-
-pre, div.highlight pre {
-    background-color: $color-code-bg;
-    padding: 1rem;
-    border-radius: 0.2em;
-    overflow: auto;
-}
-
-div.highlight pre, div.highlight pre > * {
-    font-family: $font-code;
-    color: $color-text;
-}
-
-div.highlight pre {
-    display: block;
-    line-height: 1.38em;
-}
-
-pre code {
-    font-family: $font-code;
-    color: $color-text;
-}
-
-p {
-    font-family: $font-text;
-    line-height: 1.5rem;
-    color: $color-text;
-}
-
-ul li {
-    line-height: 1.5rem;
-}
-
-body {
-    margin: 0;
-    padding: 0;
 }
 
 body > header {
@@ -128,6 +87,156 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6, main article > header > h1 {
+    font-family: $font-headline;
+    font-weight: normal;
+    color: $color-heavy;
+    hyphens: auto;
+}
+
+main article > header > h1,
+main section > header > h1 {
+    font-size: 32pt;
+}
+
+main article code {
+    font-family: $font-code;
+    background-color: $color-code-bg;
+    padding: 0.2em 0.3em;
+    @include rounded();
+}
+
+main img {
+    margin: 0 auto;
+    max-width: 100%;
+    @include shadow($color-darkshadow);
+}
+
+@mixin full-bleed($width) {
+    /*
+    https://css-tricks.com/the-inside-problem/
+    https://hankchizljaw.com/wrote/creating-a-full-bleed-css-utility/
+    */
+    width: $width;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Table Environment */
+
+main div.table {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    max-width: 90vw;
+    overflow-x: auto;
+    @include full-bleed(100vw);
+    @include shadow();
+
+    table {
+        margin: 0 auto;
+        @include noshadow();
+        width: 100%;
+    }
+}
+
+/* Plain Table */
+
+main table {
+    margin: 1em auto;
+    border-collapse: collapse;
+    border: 0.3rem solid $color-table-bg;
+    min-width: 50%;
+    overflow: auto;
+    table-layout: auto;
+    text-overflow: ellipsis;
+    @include shadow();
+
+    th, td {
+        padding: 0.8rem;
+    }
+
+    thead {
+        tr {
+            th {
+                background-color: $color-table-header-bg;
+                border-bottom: 1px solid $color-hairline;
+                color: $color-menuitem;
+                font-family: $font-headline;
+                font-weight: normal;
+                text-transform: uppercase;
+            }
+
+            th:first-child { border-top-left-radius: $border-radius; }
+            th:last-child { border-top-right-radius: $border-radius; }
+        }
+    }
+
+    tbody {
+        tr {
+            td {
+                color: $color-menuitem;
+                background-color: $color-table-bg;
+            }
+        }
+
+        tr:not(:last-child) {
+            td {
+                border-bottom: 1px solid $color-hairline;
+            }
+        }
+
+        tr:last-child {
+            td:first-child { border-bottom-left-radius: $border-radius; }
+            td:last-child { border-bottom-right-radius: $border-radius; }
+        }
+    }
+}
+
+article header + small,
+h1 + small {
+    color: $color-text;
+}
+
+.date-published {
+    cursor: help;
+}
+
+pre, div.highlight pre {
+    background-color: $color-code-bg;
+    padding: 1rem;
+    border-radius: 0.2em;
+    overflow: auto;
+}
+
+div.highlight pre, div.highlight pre > * {
+    font-family: $font-code;
+    color: $color-text;
+}
+
+div.highlight pre {
+    display: block;
+    line-height: 1.38em;
+}
+
+pre {
+    @include shadow();
+}
+
+pre code {
+    font-family: $font-code;
+    color: $color-text;
+}
+
+p {
+    font-family: $font-text;
+    line-height: 1.75rem;
+    color: $color-text;
+}
+
+ul li {
+    line-height: 1.5rem;
 }
 
 ul.menu {
@@ -376,53 +485,38 @@ span.k + span.nx { color: #FF34D5; }
 
 /* Custom Environments */
 
+@mixin environment($color-text, $color-border, $color-bg) {
+    @include rounded();
+    @include shadow();
+    color: $color-text;
+    border: 2px solid $color-border;
+    background-color: $color-bg;
+    padding: 0.5em;
+    p {
+        margin: 1em;
+    }
+}
+
 div.note {
-    background-color: $color-note-bg;
-    border: 2px solid $color-note-border;
-    padding: 0.5em;
-    border-radius: 0.2em;
-}
-
-div.note p {
-    margin: 0;
-}
-
-div.caution {
-    background-color: $color-caution-bg;
-    border: 2px solid $color-caution-border;
-    padding: 0.5em;
-    border-radius: 0.2em;
-}
-
-div.caution p {
-    margin: 0;
-}
-
-
-/*
-Hatching
---------
-
-Englisch: Schraffur
-*/
-
-/*
-Anwendung:
-.box {
-    @include hatching());
-}
-*/
-
-@mixin hatching() {
-    background-image: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 10px,
-        rgba(255,255,255,.5) 10px,
-        rgba(255,255,255,.5) 20px
+    @include environment(
+        $color-note-text,
+        $color-note-border,
+        $color-note-bg
     );
 }
 
-.weasel {
-    @include hatching();
+div.caution {
+    @include environment(
+        $color-caution-text,
+        $color-caution-border,
+        $color-caution-bg
+    );
+}
+
+div.tldr {
+    @include environment(
+        $color-tldr-text,
+        $color-tldr-border,
+        $color-tldr-bg
+    );
 }

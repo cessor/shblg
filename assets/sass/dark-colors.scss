@@ -15,6 +15,9 @@ $color-tag-textshadow: #27272a;
 /* Lighter Gray */
 $color-menuitem: #b2b2b8;
 
+/* Very light Gray */
+$color-hairline: #ffffff;
+
 /* Gray */
 $color-text: #D1D1E0;
 
@@ -27,16 +30,37 @@ $color-light: #b31292;
 /* Purple */
 $color-heavy: #ab008a;
 
+/* Gray */
+$color-table-header: #67676a;
+
+/* Rose fart */
+$color-table-highlight: #fff0fc;
+
+/* Very light pink: #ffd1f6 */
+$color-table-header-bg: #fff;
+
+/* White */
+$color-table-bg: #ffffff;
+
+$color-boxshadow: #e0daeb;
+$color-darkshadow: #b4afbd;
 
 /* Environments */
 
 /* Yellow-ish */
-$color-note-bg: #fffee8;
-$color-note-border: #ffd21c;
+$color-note-text: $color-text;
+$color-note-border: #ffe04d;
+$color-note-bg: #ffe04d;
 
 /* Red-ish */
-$color-caution-bg: #ffd8d6;
-$color-caution-border: #ff3229;
+$color-caution-text: $color-text;
+$color-caution-border: #ff3326;
+$color-caution-bg: #ff3326;
+
+/* Blue-ish */
+$color-tldr-text: $color-text;
+$color-tldr-border: #2695ff;
+$color-tldr-bg: #2695ff;
 
 /* Background-Image */
 $bg-image: url(/static/blog/bg-dark.svg);
