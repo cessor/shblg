@@ -21,6 +21,9 @@ Todo
  - [x] Index items are in chronological order
  - [x] Added robots txt to retain shreds of Lars' reputation
  - [x] Purple accent color is too  blueish -- replaced
+ - [x] Darkmode design
+ - [x] Hyphenation in titles
+ - [ ] Darkmode with CSS cookie
  - [ ] User Pics
  - [ ] Bilder per Email
  - [ ] Email: Verify Signature
