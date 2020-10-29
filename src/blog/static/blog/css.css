@@ -12,6 +12,13 @@ Text: #27272a;
     font-family: 'Open Sans';
 }
 
+body {
+    background-image: url(/static/blog/bg.svg);
+    background-repeat: no-repeat;
+    background-position: top -50px right -50px;
+    background-size: 75%;
+}
+
 h1, h2, h3, h4, h5, h6, main article > header > h1 {
     font-family: 'Asap Condensed';
     font-weight: normal;
@@ -77,15 +84,15 @@ body {
 }
 
 body > header {
-    padding: 1rem;
+    padding: 0;
     margin: 0;
+    border-bottom: 1px solid #FF34D5;
     background-color: #FF34D5;
-    background-image:
-    repeating-linear-gradient(120deg, rgba(255,255,255,.3), rgba(255,255,255,.3) 2px, transparent 2px, transparent 60px),
-    repeating-linear-gradient(60deg, rgba(255,255,255,.3), rgba(255,255,255,.3) 2px, transparent 2px, transparent 60px),
-    linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
-    linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
-    background-size: 70px 120px;
+    height: 3px;
+    position: sticky;
+    display: block;
+    top: 0;
+    z-index: 100;
 }
 
 body > header > h1 {
@@ -98,8 +105,6 @@ nav ul li a {
     color: #67676a;
     text-decoration: none;
     padding: 0.3rem;
-    border: 1px solid white;
-    border-radius: 0.5em;
     text-transform: uppercase;
     font-family: "Asap Condensed";
 }
@@ -262,6 +267,10 @@ blockquote:after {
         max-width: 48%;
         margin: 2em auto;
         text-align: left;
+    }
+
+    body {
+        background-size: 50%;
     }
 }
 
