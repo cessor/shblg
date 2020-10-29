@@ -1,31 +1,31 @@
 /* Colors */
 
 /* White */
-$color-body-bg: #ffffff;
+$color-body-bg: #381A32;
 
 /* Light Gray */
-$color-code-bg: #f4f4f4;
+$color-code-bg: #242424;
 
 /* White */
-$color-tag: #ffffff;
+$color-tag: $color-code-bg;
 
 /* Gray */
 $color-tag-textshadow: #27272a;
 
 /* Lighter Gray */
-$color-menuitem: #67676a;
+$color-menuitem: #b2b2b8;
 
 /* Gray */
-$color-text: #27272a;
+$color-text: #D1D1E0;
 
 /* Lighter Gray */
 $color-handwriting: #797979;
 
 /* Pink */
-$color-light: #ff34d5;
+$color-light: #b31292;
 
 /* Purple */
-$color-heavy: #b31292;
+$color-heavy: #ab008a;
 
 
 /* Environments */
@@ -39,4 +39,4 @@ $color-caution-bg: #ffd8d6;
 $color-caution-border: #ff3229;
 
 /* Background-Image */
-$bg-image: url(/static/blog/bg.svg);
+$bg-image: url(/static/blog/bg-dark.svg);

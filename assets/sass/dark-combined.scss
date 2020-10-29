@@ -1,4 +1,45 @@
-/* Colors: see colors.scss */
+/* Colors */
+
+/* White */
+$color-body-bg: #381A32;
+
+/* Light Gray */
+$color-code-bg: #242424;
+
+/* White */
+$color-tag: $color-code-bg;
+
+/* Gray */
+$color-tag-textshadow: #27272a;
+
+/* Lighter Gray */
+$color-menuitem: #b2b2b8;
+
+/* Gray */
+$color-text: #D1D1E0;
+
+/* Lighter Gray */
+$color-handwriting: #797979;
+
+/* Pink */
+$color-light: #b31292;
+
+/* Purple */
+$color-heavy: #ab008a;
+
+
+/* Environments */
+
+/* Yellow-ish */
+$color-note-bg: #fffee8;
+$color-note-border: #ffd21c;
+
+/* Red-ish */
+$color-caution-bg: #ffd8d6;
+$color-caution-border: #ff3229;
+
+/* Background-Image */
+$bg-image: url(/static/blog/bg-dark.svg);/* Colors: see colors.scss */
 
 
 /* Fonts */

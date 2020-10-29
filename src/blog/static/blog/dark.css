@@ -21,8 +21,8 @@
 }
 
 body {
-  background-color: #ffffff;
-  background-image: url(/static/blog/bg.svg);
+  background-color: #381A32;
+  background-image: url(/static/blog/bg-dark.svg);
   background-repeat: no-repeat;
   background-position: top -50px right -50px;
   background-size: 75%;
@@ -31,7 +31,7 @@ body {
 h1, h2, h3, h4, h5, h6, main article > header > h1 {
   font-family: "Asap Condensed";
   font-weight: normal;
-  color: #b31292;
+  color: #ab008a;
 }
 
 main article > header > h1,
@@ -41,7 +41,7 @@ main section > header > h1 {
 
 main article code {
   font-family: "Cousine";
-  background-color: #f4f4f4;
+  background-color: #242424;
   border-radius: 0.2em;
   padding: 0.2em 0.3em;
 }
@@ -53,7 +53,7 @@ main article img {
 
 article header + small,
 h1 + small {
-  color: #27272a;
+  color: #D1D1E0;
 }
 
 .date-published {
@@ -61,7 +61,7 @@ h1 + small {
 }
 
 pre, div.highlight pre {
-  background-color: #f4f4f4;
+  background-color: #242424;
   padding: 1rem;
   border-radius: 0.2em;
   overflow: auto;
@@ -69,7 +69,7 @@ pre, div.highlight pre {
 
 div.highlight pre, div.highlight pre > * {
   font-family: "Cousine";
-  color: #27272a;
+  color: #D1D1E0;
 }
 
 div.highlight pre {
@@ -79,13 +79,13 @@ div.highlight pre {
 
 pre code {
   font-family: "Cousine";
-  color: #27272a;
+  color: #D1D1E0;
 }
 
 p {
   font-family: "Open Sans";
   line-height: 1.5rem;
-  color: #27272a;
+  color: #D1D1E0;
 }
 
 ul li {
@@ -100,8 +100,8 @@ body {
 body > header {
   padding: 0;
   margin: 0;
-  border-bottom: 1px solid #ff34d5;
-  background-color: #ff34d5;
+  border-bottom: 1px solid #b31292;
+  background-color: #b31292;
   height: 3px;
   position: sticky;
   display: block;
@@ -111,7 +111,7 @@ body > header {
 
 nav ul li a {
   font-weight: normal;
-  color: #67676a;
+  color: #b2b2b8;
   text-decoration: none;
   padding: 0.3rem;
   text-transform: uppercase;
@@ -127,7 +127,7 @@ main {
 }
 
 a {
-  color: #ff34d5;
+  color: #b31292;
   text-decoration: none;
 }
 
@@ -166,18 +166,18 @@ ul.articles li:before,
 ul.authors li:before {
   content: "–";
   margin: 0 1em;
-  color: #27272a;
+  color: #D1D1E0;
 }
 
 ul.summaries li.summary {
   padding: 1em 0;
-  border-bottom: 1px solid #ff34d5;
+  border-bottom: 1px solid #b31292;
 }
 
 ul.summaries li.summary h1 a {
   font-family: "Asap Condensed";
   font-weight: normal;
-  color: #b31292;
+  color: #ab008a;
   font-size: 32pt;
   line-height: 32pt;
 }
@@ -197,11 +197,11 @@ ul.tags li.tag {
   margin: 0.25rem;
   padding: 0.25rem 0.5rem;
   border-radius: 5px;
-  background-color: #ff34d5;
+  background-color: #b31292;
 }
 
 ul.tags li.tag a {
-  color: #ffffff;
+  color: #242424;
   font-weight: bolder;
   text-decoration: none;
 }
@@ -219,7 +219,7 @@ ul.archive {
 }
 
 ul.archive li.year h2 {
-  border-bottom: 1px solid #b31292;
+  border-bottom: 1px solid #ab008a;
 }
 
 ul.archive li.year ul {
