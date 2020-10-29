@@ -15,7 +15,8 @@
     {% else %}
         {# Geschrieben von Johannes, Lars und Horst. #}
         {% for author in article.authors.all %}
-            {% if forloop.last %} und {% endif %}
+            {% comment %}Translators: Include Oxford-Comma{% endcomment %}
+            {% if forloop.last %} {% trans 'und' %} {% endif %}
             <a class="author" href="{{ author.get_absolute_url }}">{{ author.first_name }}</a>{% if not forloop.last and not forloop.revcounter0 == 1%}, {% endif %}{% if forloop.last %}.{% endif %}
         {% endfor %}
    {% endif %}

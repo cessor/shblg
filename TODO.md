@@ -25,6 +25,7 @@ Todo
  - [x] Hyphenation in titles
  - [x] Sticky zieht auf Mobilgeräten nach
  - [x] Autoren werden alphabetisch ausgegeben
+ - [x] Übersetzung - good enough
  - [ ] Darkmode durch CSS cookie enablen
  - [ ] User Pics
  - [ ] Bilder-Upload
@@ -37,6 +38,5 @@ Todo
  - [ ] Nur Artikel der aktuellen Site anzeigen
  - [ ] Autoren mit Gesicht anzeigen
  - [ ] Email-API dokumentieren
- - [ ] Übersetzung
  - [ ] Impressum
 
