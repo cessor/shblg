@@ -15,7 +15,10 @@
 {% for article in articles %}
     <li class="summary">
         <h1><a href="{{ article.get_absolute_url }}">{{ article }}</a></h1>
-        <small>{% include 'blog/components/authors.html' with authors=article.authors.all %}</small>
+        <small>
+            {% include 'blog/components/date.html' %}
+            {% include 'blog/components/authors.html' with authors=article.authors.all %}
+        </small>
         <p>
             {{ article.summary|safe }}
         </p>

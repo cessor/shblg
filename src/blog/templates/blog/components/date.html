@@ -1,0 +1,5 @@
+{% load humanize %}
+{% load i18n %}
+<span class="date-published">
+    {% trans 'Veröffentlicht ' %} <a title="{{ article.published}}">{{ article.published|naturalday }}</a>.
+</span>

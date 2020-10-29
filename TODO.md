@@ -14,12 +14,13 @@ Todo
  - [x] Docstring css anpassen
  - [x] Highlighting für JavaScript und HTML
  - [x] Admin Interface so konfiguriert, dass User nur ihre eigenen Daten ändern können
- - [ ] Admin-Links um Artikel hinzuzufügen
- - [ ] Besserer header
+ - [x] Admin-Links um Artikel hinzuzufügen
+ - [x] Besserer header
+ - [x] Inline Code marking
  - [ ] User Pics
  - [ ] Bilder per Email
  - [ ] Email: Verify Signature
  - [ ] Email import: Schalter um Verschieben zu vermeiden
  - [ ] Markdown-On-Site Editor
  - [ ] Nur Artikel der Site aktuellen Site anzeigen
- - [x] Inline Code
+

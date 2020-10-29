@@ -1,6 +1,5 @@
 {% extends 'blog/_layout.html' %}
 {% load markdown %}
-{% load humanize %}
 {% load i18n %}
 
 
@@ -14,9 +13,7 @@
             <h1>{{ article.title }}</h1>
     </header>
     <small>
-        <span class="date-published">
-            {% trans 'Veröffentlicht ' %} <a title="{{ article.published}}">{{ article.published|naturalday }}</a>.
-        </span>
+        {% include 'blog/components/date.html' %}
         {% include 'blog/components/authors.html' %}
         {% include 'blog/components/edit_article.html' %}
     </small>
