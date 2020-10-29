@@ -1,0 +1,445 @@
+/* Fonts */
+@import url('fonts.css');
+
+$font-code: 'Cousine';
+$font-text: 'Open Sans';
+$font-headline: 'Asap Condensed';
+$font-handwriting: 'Kalam';
+
+/* Colors */
+
+/* Light Gray */
+$color-code-bg: #f4f4f4;
+
+/* Gray */
+$color-text: #27272a;
+
+/* Lighter Gray */
+$color-handwriting: #797979;
+
+/* Pink */
+$color-light: #FF34D5;
+
+/* Purple */
+$color-heavy: #B31292;
+
+
+/* Environments */
+
+/* Yellow-ish */
+$color-note-bg: #FFFEE8;
+$color-note-border: #FFD21C;
+
+/* Red-ish */
+$color-caution-bg: #FFD8D6;
+$color-caution-border: #FF3229;
+
+* {
+    font-family: $font-text;
+}
+
+body {
+    background-image: url(/static/blog/bg.svg);
+    background-repeat: no-repeat;
+    background-position: top -50px right -50px;
+    background-size: 75%;
+}
+
+h1, h2, h3, h4, h5, h6, main article > header > h1 {
+    font-family: $font-headline;
+    font-weight: normal;
+    color: $color-heavy;
+}
+
+main article > header > h1,
+main section > header > h1 {
+    font-size: 32pt;
+}
+
+main article code {
+    font-family: $font-code;
+    background-color: $color-code-bg;
+    border-radius: 0.2em;
+    padding: 0.2em 0.3em;
+}
+
+main article img {
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.date-published {
+    cursor: help;
+}
+
+pre, div.highlight pre {
+    background-color: $color-code-bg;
+    padding: 1rem;
+    border-radius: 0.2em;
+    overflow: auto;
+}
+
+div.highlight pre, div.highlight pre > * {
+    font-family: $font-code;
+    color: $color-text;
+}
+
+div.highlight pre {
+    display: block;
+    line-height: 1.38em;
+}
+
+pre code {
+    font-family: $font-code;
+    color: $color-text;
+}
+
+p {
+    font-family: $font-text;
+    line-height: 1.5rem;
+    color: $color-text;
+}
+
+ul li {
+    line-height: 1.5rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body > header {
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid $color-light;
+    background-color: $color-light;
+    height: 3px;
+    position: sticky;
+    display: block;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul li a {
+    font-weight: normal;
+    color: #67676a;
+    text-decoration: none;
+    padding: 0.3rem;
+    text-transform: uppercase;
+    font-family: $font-headline;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 1rem;
+}
+
+a {
+    color: $color-light;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul.menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+ul.menu li.menuitem {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 1em;
+}
+
+ul.articles,
+ul.authors,
+ul.summaries {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.articles li:before,
+ul.authors li:before {
+    content: '\2013';
+    margin: 0 1em;
+}
+
+ul.summaries li.summary {
+    padding: 1em 0;
+    border-bottom: 1px solid $color-light;
+}
+
+ul.summaries li.summary h1 a {
+    font-family: $font-headline;
+    font-weight: normal;
+    color: $color-heavy;
+    font-size: 32pt;
+    line-height: 32pt;
+}
+
+ul.tags {
+    font-size: smaller;
+    margin: 1em 0 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+ul.tags li.tag {
+    display: inline-block;
+    margin: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: $color-light;
+}
+
+ul.tags li.tag a {
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+ul.tags li.tag a:hover {
+    text-shadow: 2px 2px 4px $color-text;
+}
+
+ul.archive {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+ul.archive li.year h2 {
+    border-bottom: 1px solid $color-heavy;
+}
+
+ul.archive li.year ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+blockquote {
+    display: inline-block;
+    padding-left: 1em;
+    margin-left: 1em;
+}
+
+blockquote, blockquote p {
+    font-family: $font-handwriting;
+    font-size:  larger;
+    color: $color-handwriting;
+}
+
+blockquote p {
+    margin: 0 0.2em;
+    padding: 0;
+}
+
+blockquote:before {
+    content: "\201C";
+    display: block;
+    font-size: 32pt;
+    height: 18pt;
+    margin: 0;
+    margin-left: -0.5em;
+    padding: 0;
+    text-align: left;
+    vertical-align: top;
+}
+
+blockquote:after {
+    content: "\201D";
+    display: block;
+    font-size: 32pt;
+    height: 18pt;
+    margin: 0;
+    margin-top: -0.3em;
+    margin-right: -0.5em;
+    padding: 0;
+    text-align: right;
+    vertical-align: top;
+}
+
+@media only screen and (min-width: 1224px){
+    main {
+        max-width: 48%;
+        margin: 2em auto;
+        text-align: left;
+    }
+
+    body {
+        background-size: 50%;
+    }
+}
+
+
+/* Syntax Highlighting */
+
+/* Python */
+
+div.highlight pre {
+    /* Operator */
+    span.o { }
+
+    /* Keyword */
+    span.k,
+    /* Operator-Keyword */
+    span.ow { color: #2695FF; }
+
+    /* Import */
+    span.kn { color: #2695FF;}
+
+    /* Module Name */
+    span.nn { color: #FF34D5; }
+
+    /* Named Decorator */
+    span.nd { color: #1BB3AD; }
+
+    /* Named builtin */
+    span.nb { color: #2695FF; }
+
+    /* Dunder */
+    span.fm { color: #00BBFE; }
+
+    /* Named Class */
+    span.nc { color: #FF34D5; }
+
+    /* Named Function */
+    span.nf { color: #FF34D5; }
+
+    /* Docstring */
+    span.sd { color: #9494B0; /*color: #4A4A75; #2E2E8C; #77D*/ }
+
+    /* Comment (1 line) */
+    span.c1 { color: #B4B4C2; /*color: #6D6D75;*/ }
+
+    /* Self */
+    span.bp { color: #B31292; }
+
+    /* String, Single Quoted */
+    span.s1,
+    /* String, Douple Quoted */
+    span.s2 { color: #FF854D;
+        /*color: #FFBC4D;*/
+        /*color: #E88F3A;*/
+    }
+
+    /* Int Literal */
+    span.mi { color: #33AD11; /*#4AFF19 grün*/ }
+
+    /* Magic Variable (e.g. __main__) */
+    span.vm { color: #00BBFE; }
+
+
+    /* Javascript */
+
+    /* Keyword `function` */
+    span.kd,
+    /* Keyword `const` */
+    span.kr { color: #2695FF; }
+
+    /* Named function or object */
+    span.nx {  }
+
+    /* JavaScript interpolated string  */
+    span.si,
+    span.sb { color: #FF854D; }
+
+
+    /* HTML */
+
+    /* Tag */
+    span.p,
+    span.nt { color: #2695FF; }
+
+    /* Named Attribute */
+    span.na { color: #1BB3AD; }
+
+    /* Attribute Value */
+    span.s { color: #FF854D; }
+
+    /* HTML-Comment */
+    span.c { color: #B4B4C2; }
+}
+
+/* Function declaration (e.g. `function` <Name>) */
+span.kd + span.nx { color: #FF34D5; }
+
+/* Ctor calls (e.g. `new` <Name>) */
+span.k + span.nx { color: #FF34D5; }
+
+
+/* Custom Environments */
+
+div.note {
+    background-color: $color-note-bg;
+    border: 2px solid $color-note-border;
+    padding: 0.5em;
+    border-radius: 0.2em;
+}
+
+div.note p {
+    margin: 0;
+}
+
+div.caution {
+    background-color: $color-caution-bg;
+    border: 2px solid $color-caution-border;
+    padding: 0.5em;
+    border-radius: 0.2em;
+}
+
+div.caution p {
+    margin: 0;
+}
+
+
+/*
+Hatching
+--------
+
+Englisch: Schraffur
+*/
+
+/*
+Anwendung:
+.box {
+    @include hatching());
+}
+*/
+
+@mixin hatching() {
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255,255,255,.5) 10px,
+        rgba(255,255,255,.5) 20px
+    );
+}
+
+.weasel {
+    @include hatching();
+}
