@@ -17,6 +17,8 @@ Todo
  - [x] Admin-Links um Artikel hinzuzufügen
  - [x] Besserer header
  - [x] Inline Code marking
+ - [x] Index is a summary view
+ - [x] Index items are in chronological order
  - [ ] User Pics
  - [ ] Bilder per Email
  - [ ] Email: Verify Signature
