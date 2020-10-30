@@ -48,19 +48,19 @@ $color-darkshadow: #b4afbd;
 /* Environments */
 
 /* Yellow-ish */
-$color-note-text: $color-text;
-$color-note-border: #ffe04d;
-$color-note-bg: #ffe04d;
+$color-note-text: #69685c;
+$color-note-bg: #fff894;
+$color-note-border: $color-note-bg;
 
 /* Red-ish */
-$color-caution-text: $color-text;
-$color-caution-border: #ff3326;
-$color-caution-bg: #ff3326;
+$color-caution-text: #5e2c38;
+$color-caution-bg: #ffc7d5;
+$color-caution-border: $color-caution-bg;
 
 /* Blue-ish */
-$color-tldr-text: $color-text;
-$color-tldr-border: #2695ff;
-$color-tldr-bg: #2695ff;
+$color-tldr-text: #34464d;
+$color-tldr-bg: #aeebff;
+$color-tldr-border: $color-tldr-bg;
 
 /* Background-Image */
 $bg-image: url(/static/blog/bg.svg);

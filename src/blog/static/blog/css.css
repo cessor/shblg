@@ -472,12 +472,13 @@ div.note {
   border-radius: 0.3rem;
   /*offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 0px 4px 14px 0px #e0daeb;
-  color: #27272a;
-  border: 2px solid #ffe04d;
-  background-color: #ffe04d;
+  color: #69685c;
+  border: 2px solid #fff894;
+  background-color: #fff894;
   padding: 0.5em;
 }
 div.note p {
+  color: #69685c;
   margin: 1em;
 }
 
@@ -485,12 +486,13 @@ div.caution {
   border-radius: 0.3rem;
   /*offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 0px 4px 14px 0px #e0daeb;
-  color: #27272a;
-  border: 2px solid #ff3326;
-  background-color: #ff3326;
+  color: #5e2c38;
+  border: 2px solid #ffc7d5;
+  background-color: #ffc7d5;
   padding: 0.5em;
 }
 div.caution p {
+  color: #5e2c38;
   margin: 1em;
 }
 
@@ -498,11 +500,12 @@ div.tldr {
   border-radius: 0.3rem;
   /*offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 0px 4px 14px 0px #e0daeb;
-  color: #27272a;
-  border: 2px solid #2695ff;
-  background-color: #2695ff;
+  color: #34464d;
+  border: 2px solid #aeebff;
+  background-color: #aeebff;
   padding: 0.5em;
 }
 div.tldr p {
+  color: #34464d;
   margin: 1em;
 }
