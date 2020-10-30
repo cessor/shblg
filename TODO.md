@@ -26,17 +26,30 @@ Todo
  - [x] Sticky zieht auf Mobilgeräten nach
  - [x] Autoren werden alphabetisch ausgegeben
  - [x] Übersetzung - good enough
- - [ ] Darkmode durch CSS cookie enablen
- - [ ] User Pics
- - [ ] Bilder-Upload
- - [ ] Bilder-Manager: Crop-Funktion fürs Layout
- - [ ] Super Fancy Header: Flickering Animation der Dreiecke?
- - [ ] Bilder per Email
- - [ ] Email: Verify Signature
- - [ ] Email import: Schalter um Verschieben zu vermeiden
- - [ ] Markdown-On-Site Editor
- - [ ] Nur Artikel der aktuellen Site anzeigen
- - [ ] Autoren mit Gesicht anzeigen
- - [ ] Email-API dokumentieren
+ - [x] Environment ```tldr```
+ - [x] Environment: Farben muten
+ - [ ] Draft mode implementieren
+ - [ ] Autoren
+    - [ ] User-Bilder an fester Stelle
+    - [ ] Nice to have: Croppie
+    - [ ] Author-Seiten sollten Username als Slugs nutzen, nicht IDs
+    - [ ] Autoren mit Gesicht anzeigen
+ - [ ] Tabellen-Layout: Irgendwas verschlimmbessert, die halb-große Tabelle ist zu breit?
+ - [ ] Bilder:
+     - [ ] Grundsätzlich in Seite zentrieren
+     - [ ] Große Bilder mit Bleedout?
+     - [ ] Bilder-Upload
+     - [ ] Bilder-Manager: Crop-Funktion fürs Layout
+     - [ ] Email: Bilder per Anhang werden dem Artikel beigefügt
+ - [ ] Email
+     - [ ] Antworten
+     - [ ] Api: List, Draft:, Delete:, Update:
+     - [ ] Email-API dokumentieren
+     - [ ] Email: Verify Signature. Der Algorithmus ist zur Zeit zu oberflächlich
+     - [ ] Email: Import. Schalter um Verschieben zu vermeiden
  - [ ] Impressum
-
+ - [ ] Nur Artikel der aktuellen Site anzeigen
+ - [ ] Review-Modus implementieren
+ - [ ] Super Fancy Header: Flickering Animation der Dreiecke?
+ - [ ] Markdown-On-Site Editor
+ - [ ] Darkmode nachbessern. Darkmode oder sonstige CSS Cookie enablen
