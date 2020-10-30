@@ -24,23 +24,6 @@ urlpatterns = [
         name='django.contrib.sitemaps.views.sitemap'
     ),
     path(
-        route='thema',
-        view=ListView.as_view(
-            model=Tag,
-            get_queryset=Tag.with_articles.all,
-            context_object_name='tags'
-        ),
-        name='tags'
-    ),
-    path(
-        route='thema/<slug:slug>',
-        view=DetailView.as_view(
-            model=Tag,
-            context_object_name='tag'
-        ),
-        name='tag'
-    ),
-    path(
         route='author/',
         view=ListView.as_view(
             model=Author,
@@ -64,6 +47,40 @@ urlpatterns = [
             allow_empty = True
         ),
         name='archive'
+    ),
+    path(
+        route='entwurf',
+        view=ListView.as_view(
+            model=Article,
+            get_queryset=Article.drafts.all,
+            context_object_name='articles'
+        ),
+        name='drafts'
+    ),
+    path(
+        route='entwurf/<slug:slug>',
+        view=ListView.as_view(
+            model=Article,
+            context_object_name='article'
+        ),
+        name='draft'
+    ),
+    path(
+        route='thema',
+        view=ListView.as_view(
+            model=Tag,
+            get_queryset=Tag.with_articles.all,
+            context_object_name='tags'
+        ),
+        name='tags'
+    ),
+    path(
+        route='thema/<slug:slug>',
+        view=DetailView.as_view(
+            model=Tag,
+            context_object_name='tag'
+        ),
+        name='tag'
     ),
     path(
         route='<slug:slug>',

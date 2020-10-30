@@ -39,4 +39,5 @@ Todo
  - [ ] Autoren mit Gesicht anzeigen
  - [ ] Email-API dokumentieren
  - [ ] Impressum
-
+ - [x] Bessere Farben für Envs
+ - [ ] Draft-Mode
