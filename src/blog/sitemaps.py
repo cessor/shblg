@@ -1,4 +1,5 @@
-from django.contrib.sitemaps import GenericSitemap as GenericSitemapBase, Sitemap as SitemapBase
+from django.contrib.sitemaps import (GenericSitemap as GenericSitemapBase,
+                                     Sitemap as SitemapBase)
 from django.urls import reverse
 from . import models
 
