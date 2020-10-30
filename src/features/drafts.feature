@@ -6,9 +6,7 @@ Feature: Drafts
         And I have logged in
 
     Scenario: Authoring a draft
-        When I am writing and article
-            | Title                | Content                             |
-            | On becoming a person | A Therapist's View of Psychotherapy |
+        When I am writing an article
         And I set the published date to None
         Then I the article becomes a draft
 

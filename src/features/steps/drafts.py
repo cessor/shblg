@@ -28,13 +28,13 @@ def log_in(context):
     context.requests = RequestFactory()
 
 
-@when(u'I am writing and article')
+@when(u'I am writing an article')
 def write_an_article(context):
     from blog.models import Author, Article
     article, *_ = context.table
     context.article = Article.objects.create(
-        title=article.get('Title'),
-        content=article.get('Content')
+        title='On becoming a person',
+        content="A Therapist's View of Psychotherapy"
     )
 
 
