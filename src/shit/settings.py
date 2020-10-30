@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 ALLOWED_HOSTS = [
     'localhost',
-    'shit.kumbier.it'
+    'random.kumbier.it'
 ]
 
 
