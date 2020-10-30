@@ -1,7 +1,9 @@
+from django.contrib.sitemaps.views import sitemap
 from django.urls import path
 from django.views.generic import ListView, DetailView
 from django.views.generic import ArchiveIndexView, TemplateView
 from .models import Article, Author, Tag
+from .sitemaps import Sitemaps
 
 app_name = 'blog'
 
@@ -14,6 +16,12 @@ urlpatterns = [
             content_type='text/plain'
         ),
         name='robots'
+    ),
+    path(
+        route='sitemap.xml',
+        view=sitemap,
+        kwargs={'sitemaps': dict(Sitemaps())},
+        name='django.contrib.sitemaps.views.sitemap'
     ),
     path(
         route='thema',

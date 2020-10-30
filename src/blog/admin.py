@@ -11,16 +11,17 @@ class AuthorAdmin(UserAdmin):
         return not not instance.pgp_public_key
     has_pgp_key.boolean = True
     has_pgp_key.short_description = _('PGP-Key Hinterlegt?')
-    fieldsets = UserAdmin.fieldsets + (
+
+    readonly_fields = ['updated']
+    # Don't change these commas
+    fieldsets = (
         (
-        _('Biografie'), {
-            'fields': ('biography',)
-        }),
+            _('Biografie'), { 'fields': ('biography', 'updated') }
+        ),
         (
-        _('PGP'), {
-            'fields': ('pgp_public_key',)
-        }),  # Don't change these commas
-    )
+            _('PGP'), { 'fields': ('pgp_public_key',) }
+        ),
+    ) + UserAdmin.fieldsets
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)

@@ -43,6 +43,11 @@ class Author(AbstractUser):
         help_text=_('Unterstützt Markdown-Syntax')
     )
 
+    updated = models.DateTimeField(
+        verbose_name=_('Geändert am'),
+        auto_now=True
+    )
+
     class Meta:
         verbose_name = _('Autor')
         verbose_name_plural = _('Autoren')
@@ -124,6 +129,10 @@ class Tag(Sluggable, models.Model):
         blank=True,
         unique=True,
         help_text=_('Freilassen, um Slug aus dem Titel zu generieren')
+    )
+
+    created = models.DateTimeField(
+        auto_now_add=True
     )
 
     def color(self):
