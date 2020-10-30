@@ -150,8 +150,16 @@ class ChronologicalManager(models.Manager):
         return super().get_queryset().order_by('-published')
 
 
+class DraftsManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(
+            published__isnull=True
+        )
+
+
 class Article(Sluggable, models.Model):
     objects = models.Manager()
+    drafts = DraftsManager()
     chronological = ChronologicalManager()
     on_site = CurrentSiteManager()
 
@@ -197,13 +205,6 @@ class Article(Sluggable, models.Model):
         blank=True
     )
 
-    published = models.DateTimeField(
-        verbose_name=_('Veröffentlicht am'),
-        null=True,
-        blank=True,
-        default=timezone.now
-    )
-
     created = models.DateTimeField(
         verbose_name=_('Erstellt am'),
         auto_now_add=True
@@ -212,6 +213,13 @@ class Article(Sluggable, models.Model):
     updated = models.DateTimeField(
         verbose_name=_('Geändert am'),
         auto_now=True
+    )
+
+    published = models.DateTimeField(
+        verbose_name=_('Veröffentlicht am'),
+        null=True,
+        blank=True,
+        default=timezone.now
     )
 
     @property
@@ -228,7 +236,9 @@ class Article(Sluggable, models.Model):
         )
 
     def get_absolute_url(self):
-        return reverse('blog:article', args=[self.slug])
+        if self.published:
+            return reverse('blog:article', args=[self.slug])
+        return reverse('blog:draft', args=[self.slug])
 
     def __str__(self):
         return str(self.title)
