@@ -1,0 +1,10 @@
+Comments
+========
+
+ - I can add comments with markers
+ - Comments are id'ed by article and an integer, i.e. article/1, article/2
+ - Within markdown I simply mark comments by their ID (<!-- 1 -->)
+ - When in Draft mode, comments are displayed on the side
+ - Comment Entity: Content, Author, Status (New, Accepted, Rejected)
+ - Addition: Comments can be threaded; Questions asked
+ - Email-Notification when a comment is added...

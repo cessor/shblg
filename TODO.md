@@ -54,3 +54,5 @@ Todo
  - [ ] Super Fancy Header: Flickering Animation der Dreiecke?
  - [ ] Markdown-On-Site Editor
  - [ ] Darkmode nachbessern. Darkmode oder sonstige CSS Cookie enablen
+ - [ ] Comments for Draft mode
+ - [ ] CSS based TOC at the top of the article? (No JS!!!)
