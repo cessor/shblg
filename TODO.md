@@ -1,60 +1,70 @@
 Todo
 ----
  - [x] Syntax Highlighting- Pygment
+     - [x] Docstring css anpassen
+     - [x] Highlighting für JavaScript und HTML
  - [x] Bearbeiten - Link
- - [x] Autoren-Bio
- - [x] Themenliste flexwrap
- - [x] Themenliste zeigt nur Themen die auch Artikel haben
+ - [ ] Themen
+     - [x] Themenliste flexwrap
+     - [x] Themenliste zeigt nur Themen die auch Artikel haben
+     - [x] Themen: weniger Farbe
+ - [ ] Admin Interface
+     - [x] Admin Interface so konfiguriert, dass User nur ihre eigenen Daten ändern können
+     - [x] Admin-Links um Artikel hinzuzufügen
+     - [x] Site in den List-Fields des Article-Admin anzeigen
  - [x] Menu flexwrap
- - [x] Themen: weniger Farbe
- - [x] Environment ```note```
- - [x] Bilder sollten responsive eingebunden werden
- - [x] Environment ```caution```
- - [x] Site in den List-Fields des Article-Admin anzeigen
- - [x] Docstring css anpassen
- - [x] Highlighting für JavaScript und HTML
- - [x] Admin Interface so konfiguriert, dass User nur ihre eigenen Daten ändern können
- - [x] Admin-Links um Artikel hinzuzufügen
  - [x] Besserer header
  - [x] Inline Code marking
- - [x] Index is a summary view
- - [x] Index items are in chronological order
- - [x] Added robots txt to retain shreds of Lars' reputation
+ - [x] Index zeigt Kurzfassungen
+ - [x] Index zeigt Artikel in chronologischer Reihenfolge
+ - [ ] SEO
+    - [x] robots.txt
+    - [x] OG Tags
+    - [x] JSON-LD
  - [x] Purple accent color is too  blueish -- replaced
  - [x] Darkmode design
  - [x] Hyphenation in titles
  - [x] Sticky zieht auf Mobilgeräten nach
  - [x] Autoren werden alphabetisch ausgegeben
  - [x] Übersetzung - good enough
- - [x] Environment ```tldr```
- - [x] Environment: Farben muten
+ - [ ] Environments:
+    - [ ] Bash
+    - [x] ```tldr```
+    - [x] ```caution```
+    - [x] ```note```
+    - [x] ```table```
+    - [x] Farben muten
  - [x] Draft mode implementieren
     - [ ] Anonyme Drafts sollten das Menü oben aktivieren
  - [ ] Autoren
+    - [ ] Author-Seiten sollten Username als Slugs nutzen, nicht IDs
     - [ ] User-Bilder an fester Stelle
     - [ ] Nice to have: Croppie
-    - [ ] Author-Seiten sollten Username als Slugs nutzen, nicht IDs
     - [ ] Autoren mit Gesicht anzeigen
- - [ ] Tabellen-Layout: Irgendwas verschlimmbessert, die halb-große Tabelle ist zu breit?
+    - [x] Autoren-Bio
+ - [ ] Tabellen
+    - [ ] Layout: Irgendwas verschlimmbessert, die halb-große Tabelle ist zu breit?
+    - [ ] Zwischenlinie
  - [ ] Bilder:
      - [ ] Grundsätzlich in Seite zentrieren
      - [ ] Große Bilder mit Bleedout?
      - [ ] Bilder-Upload
      - [ ] Bilder-Manager: Crop-Funktion fürs Layout
      - [ ] Email: Bilder per Anhang werden dem Artikel beigefügt
+     - [x] Bilder sollten responsive eingebunden werden
  - [ ] Email
      - [ ] Antworten
      - [ ] Api: List, Draft:, Delete:, Update:
      - [ ] Email-API dokumentieren
      - [ ] Email: Verify Signature. Der Algorithmus ist zur Zeit zu oberflächlich
      - [ ] Email: Import. Schalter um Verschieben zu vermeiden
+ - [ ] Sites
+    - [ ] Nur Artikel der aktuellen Site anzeigen
  - [ ] Impressum
- - [ ] Nur Artikel der aktuellen Site anzeigen
  - [ ] Review-Modus implementieren
  - [ ] Super Fancy Header: Flickering Animation der Dreiecke?
  - [ ] Markdown-On-Site Editor
  - [ ] Darkmode nachbessern. Darkmode oder sonstige CSS Cookie enablen
- - [ ] Comments for Draft mode
+ - [ ] Comments / Review im Draft-Modus
  - [ ] CSS based TOC at the top of the article? (No JS!!!)
- - [ ] Table: Intermediate line
- -
+ - [ ] Hilfe, Dokumentation
