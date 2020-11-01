@@ -520,3 +520,47 @@ div.tldr {
         $color-tldr-bg
     );
 }
+
+
+div.comment {
+    display: block;
+    width: 15em;
+    float: left;
+    margin: 0 0 0 -18em;
+    border-width: 1px;
+
+    @include environment(
+        $color-comment-text,
+        $color-comment-border,
+        $color-comment-bg
+    );
+
+    textarea {
+        font-family: $font-handwriting;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: $color-comment-textarea-bg;
+        border: none;
+        @include rounded();
+    }
+
+    div.bottom {
+        font-size: smaller;
+        span.author {
+            font-weight: bolder;
+        }
+
+        span.date{
+
+        }
+    }
+}
+
+a.anchor {
+    display: inline-block;
+    color: lime;
+    width: 1em;
+    height: 1em;
+    background-color: lime;
+}

@@ -1,0 +1,39 @@
+{% extends 'blog/_layout.html' %}
+{% load markdown %}
+{% load i18n %}
+
+
+
+{% block title %}{{ article.title }} | {% trans 'Entwurf' %}{% endblock %}
+
+
+{% block content %}
+<article>
+    <header>
+            <h1>Entwurf: {{ article.title }}</h1>
+    </header>
+    <small>
+        {% include 'blog/components/date.html' %}
+        {% include 'blog/components/authors.html' %}
+        {% include 'blog/components/edit_article.html' %}
+    </small>
+    <ul class="tags">
+        {% for tag in article.tags.all %}
+        <li class="tag {{ tag.color }}"><a href="{{ tag.get_absolute_url }}">{{ tag }}</a></li>
+        {% endfor %}
+    </ul>
+    {{ article.content|markdown|safe }}
+
+
+    <ul>
+        {% for comment in article.comments.all %}
+        <li>
+            <div>
+                {{ comment.author }}: {{ comment.content }} {{ comment.updated }}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+</article>
+{% endblock %}

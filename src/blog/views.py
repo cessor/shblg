@@ -11,6 +11,7 @@ from . import models
 class DraftView(PermissionRequiredMixin, DetailView):
     permission_required = ('blog.view_draft')
     model = models.Article
+    template_name = 'blog/draft_detail.html'
     context_object_name = 'article'
 
 

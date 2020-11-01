@@ -18,6 +18,7 @@
 /* Yellow-ish */
 /* Red-ish */
 /* Blue-ish */
+/* Blue-ish */
 /* Background-Image */
 /* Colors: see colors.scss */
 /* Fonts */
@@ -508,4 +509,45 @@ div.tldr {
 div.tldr p {
   color: #34464d;
   margin: 1em;
+}
+
+div.comment {
+  display: block;
+  width: 15em;
+  float: left;
+  margin: 0 0 0 -18em;
+  border-width: 1px;
+  border-radius: 0.3rem;
+  /*offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0px 4px 14px 0px #e0daeb;
+  color: #34464d;
+  border: 2px solid #577580;
+  background-color: #ccf2ff;
+  padding: 0.5em;
+}
+div.comment p {
+  color: #34464d;
+  margin: 1em;
+}
+div.comment textarea {
+  font-family: "Kalam";
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 0.3rem;
+}
+div.comment div.bottom {
+  font-size: smaller;
+}
+div.comment div.bottom span.author {
+  font-weight: bolder;
+}
+a.anchor {
+  display: inline-block;
+  color: lime;
+  width: 1em;
+  height: 1em;
+  background-color: lime;
 }

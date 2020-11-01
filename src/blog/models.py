@@ -297,3 +297,41 @@ class Article(Sluggable, models.Model):
             ("view_draft", _("Can view draft")),
             ("publish_draft", _("Can publish draft")),
         )
+
+
+class Comment(models.Model):
+    article = models.ForeignKey(
+        to=Article,
+        verbose_name=_('Artikel'),
+        on_delete=models.CASCADE,
+        related_name='comments'
+    )
+
+    author = models.ForeignKey(
+        to=Author,
+        verbose_name=_('Autor'),
+        on_delete=models.CASCADE,
+        related_name='comments'
+    )
+
+    content = models.TextField(
+        verbose_name=_('Inhalt'),
+        help_text=_('Unterstützt Markdown-Syntax')
+    )
+
+    created = models.DateTimeField(
+        verbose_name=_('Erstellt am'),
+        auto_now_add=True
+    )
+
+    updated = models.DateTimeField(
+        verbose_name=_('Geändert am'),
+        auto_now=True
+    )
+
+    accepted = models.DateTimeField(
+        verbose_name=_('Angenommen am'),
+        null=True,
+        blank=True,
+        default=None
+    )

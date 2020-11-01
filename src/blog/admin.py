@@ -29,10 +29,10 @@ class AuthorAdmin(UserAdmin):
             return queryset
         return queryset.filter(username=request.user.username)
 
-    def get_form(self, request, obj=None, **kwargs):
+    def get_form(self, request, instance=None, **kwargs):
         # Source:
         # https://realpython.com/manage-users-in-django-admin/
-        form = super().get_form(request, obj, **kwargs)
+        form = super().get_form(request, instance, **kwargs)
         is_superuser = request.user.is_superuser
 
         # Disable all fields
@@ -47,8 +47,8 @@ class AuthorAdmin(UserAdmin):
         # Enable editing personal data
         if (
             not is_superuser
-            and obj is not None
-            and obj == request.user
+            and instance is not None
+            and instance == request.user
         ):
             disabled_fields.remove('biography')
             disabled_fields.remove('email')
@@ -69,6 +69,11 @@ class TagAdmin(admin.ModelAdmin):
     pass
 
 
+class CommentInline(admin.StackedInline):
+    model = models.Comment
+    readonly_fields = ['created', 'updated']
+
+
 @admin.register(models.Article)
 class ArticleAdmin(admin.ModelAdmin):
     def author_display(self, instance):
@@ -82,3 +87,5 @@ class ArticleAdmin(admin.ModelAdmin):
 
     list_display = ['title', 'author_display', 'published',
                     'created', 'updated', 'site']
+
+    inlines = [CommentInline]
