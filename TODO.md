@@ -1,47 +1,50 @@
 Todo
 ----
+ - [x] Index zeigt Kurzfassungen
+ - [x] Index zeigt Artikel in chronologischer Reihenfolge
+ - [ ] Theme
+    - [x] Besserer header
+    - [x] Inline code marking
+    - [x] Purple accent color is too  blueish -- replaced
+    - [x] Darkmode design
+    - [x] Hyphenation in titles
+    - [x] Sticky zieht auf Mobilgeräten nach
+    - [x] Menu flexwrap
+    - [ ] Super Fancy Header: Flickering Animation der Dreiecke?
+    - [ ] CSS
+        - [ ] CSS basierte TOC an Anfang des Artikels? of the article? (No JS!!!)
+        - [ ] Darkmode nachbessern. Darkmode oder sonstige CSS Cookie enablen
+    - [ ] Environments:
+        - [ ] Bash
+        - [x] ```tldr```
+        - [x] ```caution```
+        - [x] ```note```
+        - [x] ```table```
+        - [x] Farben muten
  - [x] Syntax Highlighting- Pygment
      - [x] Docstring css anpassen
      - [x] Highlighting für JavaScript und HTML
- - [x] Bearbeiten - Link
- - [ ] Themen
+ - [x] Themen
      - [x] Themenliste flexwrap
      - [x] Themenliste zeigt nur Themen die auch Artikel haben
      - [x] Themen: weniger Farbe
- - [ ] Admin Interface
+ - [x] Admin Interface
      - [x] Admin Interface so konfiguriert, dass User nur ihre eigenen Daten ändern können
      - [x] Admin-Links um Artikel hinzuzufügen
      - [x] Site in den List-Fields des Article-Admin anzeigen
- - [x] Menu flexwrap
- - [x] Besserer header
- - [x] Inline Code marking
- - [x] Index zeigt Kurzfassungen
- - [x] Index zeigt Artikel in chronologischer Reihenfolge
  - [ ] SEO
     - [x] robots.txt
-    - [x] OG Tags
-    - [x] JSON-LD
- - [x] Purple accent color is too  blueish -- replaced
- - [x] Darkmode design
- - [x] Hyphenation in titles
- - [x] Sticky zieht auf Mobilgeräten nach
+    - [ ] OG Tags
+    - [ ] JSON-LD
  - [x] Autoren werden alphabetisch ausgegeben
  - [x] Übersetzung - good enough
- - [ ] Environments:
-    - [ ] Bash
-    - [x] ```tldr```
-    - [x] ```caution```
-    - [x] ```note```
-    - [x] ```table```
-    - [x] Farben muten
- - [x] Draft mode implementieren
-    - [ ] Anonyme Drafts sollten das Menü oben aktivieren
  - [ ] Autoren
     - [ ] Author-Seiten sollten Username als Slugs nutzen, nicht IDs
     - [ ] User-Bilder an fester Stelle
     - [ ] Nice to have: Croppie
     - [ ] Autoren mit Gesicht anzeigen
     - [x] Autoren-Bio
+    - [x] Bearbeiten - Link
  - [ ] Tabellen
     - [ ] Layout: Irgendwas verschlimmbessert, die halb-große Tabelle ist zu breit?
     - [ ] Zwischenlinie
@@ -61,10 +64,11 @@ Todo
  - [ ] Sites
     - [ ] Nur Artikel der aktuellen Site anzeigen
  - [ ] Impressum
- - [ ] Review-Modus implementieren
- - [ ] Super Fancy Header: Flickering Animation der Dreiecke?
- - [ ] Markdown-On-Site Editor
- - [ ] Darkmode nachbessern. Darkmode oder sonstige CSS Cookie enablen
- - [ ] Comments / Review im Draft-Modus
- - [ ] CSS based TOC at the top of the article? (No JS!!!)
- - [ ] Hilfe, Dokumentation
+ - [ ] Usabiltiy
+    - [ ] Markdown-On-Site Editor
+    - [ ] Hilfe, Dokumentation
+ - [ ] Features
+    - [ ] Comments / Review im Draft-Modus
+    - [ ] Draft mode
+        - [x] Drafts
+        - [ ] Anonyme Drafts sollten das Menü oben aktivieren
