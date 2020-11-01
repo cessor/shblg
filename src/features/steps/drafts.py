@@ -279,7 +279,7 @@ def try_to_publish_article(context):
         )
 
 
-@then(u'the the article is not published')
+@then(u'the article is not published')
 def assert_that_published_date_was_not_set(context):
     context.draft.refresh_from_db()
     context.test.assertFalse(

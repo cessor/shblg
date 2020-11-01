@@ -28,7 +28,8 @@ Todo
  - [x] Übersetzung - good enough
  - [x] Environment ```tldr```
  - [x] Environment: Farben muten
- - [ ] Draft mode implementieren
+ - [x] Draft mode implementieren
+    - [ ] Anonyme Drafts sollten das Menü oben aktivieren
  - [ ] Autoren
     - [ ] User-Bilder an fester Stelle
     - [ ] Nice to have: Croppie
@@ -55,3 +56,5 @@ Todo
  - [ ] Darkmode nachbessern. Darkmode oder sonstige CSS Cookie enablen
  - [ ] Comments for Draft mode
  - [ ] CSS based TOC at the top of the article? (No JS!!!)
+ - [ ] Table: Intermediate line
+ -

@@ -57,7 +57,7 @@ Feature: Authoring drafts
         Given I have written a draft
         And I don't have the permissions to publish a draft
         When I try to publish it
-        Then the the article is not published
+        Then the article is not published
 
     Scenario: Visitors don't see drafts item in main menu
         Given I am not logged in
