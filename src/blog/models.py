@@ -12,6 +12,7 @@ from django.utils.translation import gettext_lazy as _
 
 import mistune
 
+
 class Sluggable:
     SLUGIFY_FIELD = ''
 
@@ -102,10 +103,22 @@ class Color:
 
 class TaggedArticleManager(models.Manager):
     def get_queryset(self):
+        """
+        Retrieves all tags with articles that have actually
+        been published. This prevents empty tags from appearing
+        on the tags page.
+        """
         return (
             super()
             .get_queryset()
-            .annotate(n_articles=models.Count('articles'))
+            .annotate(
+                n_articles=models.Count(
+                    'articles',
+                    filter=models.Q(
+                        articles__published__isnull=False
+                    )
+                )
+            )
             .filter(n_articles__gt=0)
         )
 
@@ -145,7 +158,17 @@ class Tag(Sluggable, models.Model):
         return str(self.tag)
 
 
-class ChronologicalManager(models.Manager):
+class PublishedArticlesManager(models.Manager):
+    def get_queryset(self):
+        return (
+            super()
+            .get_queryset()
+            .filter(published__isnull=False)
+            .order_by('-published')
+        )
+
+
+class ChronologicalManager(PublishedArticlesManager):
     def get_queryset(self):
         return super().get_queryset().order_by('-published')
 
@@ -157,9 +180,29 @@ class DraftsManager(models.Manager):
         )
 
 
+class ArticleQuerySet(models.QuerySet):
+    def drafts(self):
+        return self.filter(published__isnull=True)
+
+    def published(self):
+        return self.filter(published__isnull=False)
+
+
+class ArticleManager(models.Manager):
+    def get_queryset(self):
+        return ArticleQuerySet(self.model, using=self._db)
+
+    def drafts(self):
+        return self.get_queryset().drafts()
+
+    def published(self):
+        return self.get_queryset().published()
+
+
 class Article(Sluggable, models.Model):
-    objects = models.Manager()
+    objects = ArticleManager()
     drafts = DraftsManager()
+    published_articles = PublishedArticlesManager()
     chronological = ChronologicalManager()
     on_site = CurrentSiteManager()
 
@@ -247,6 +290,7 @@ class Article(Sluggable, models.Model):
         verbose_name = _('Artikel')
         verbose_name_plural = _('Artikel')
 
-
-
-
+        permissions = (
+            ("view_draft", _("Can view draft")),
+            ("publish_draft", _("Can publish draft")),
+        )

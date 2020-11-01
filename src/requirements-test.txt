@@ -1,1 +1,2 @@
-django-behave
+python-behave
+sphinx

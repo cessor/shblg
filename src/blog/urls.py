@@ -2,6 +2,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.urls import path
 from django.views.generic import ListView, DetailView
 from django.views.generic import ArchiveIndexView, TemplateView
+from . import views
 from .models import Article, Author, Tag
 from .sitemaps import Sitemaps
 
@@ -49,21 +50,19 @@ urlpatterns = [
         name='archive'
     ),
     path(
-        route='entwurf',
-        view=ListView.as_view(
-            model=Article,
-            get_queryset=Article.drafts.all,
-            context_object_name='articles'
-        ),
-        name='drafts'
+        route='entwurf/<slug:slug>',
+        view=views.DraftView.as_view(),
+        name='draft'
     ),
     path(
-        route='entwurf/<slug:slug>',
-        view=ListView.as_view(
-            model=Article,
-            context_object_name='article'
-        ),
-        name='draft'
+        route='entwurf/<slug:slug>/publish',
+        view=views.PublishDraftView.as_view(),
+        name='publish_now'
+    ),
+    path(
+        route='entwurf',
+        view=views.DraftsView.as_view(),
+        name='drafts'
     ),
     path(
         route='thema',

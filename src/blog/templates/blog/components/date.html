@@ -1,5 +1,12 @@
 {% load humanize %}
 {% load i18n %}
+
+{% if article.published %}
 <span class="date-published">
     {% trans 'Veröffentlicht ' %} <a title="{{ article.published}}">{{ article.published|naturalday }}</a>.
 </span>
+{% else %}
+<span class="draft">
+    {% trans 'Dies ist ein Entwurf. Der Artikel wurde noch nicht veröffentlicht.' %}
+</span>
+{% endif %}
