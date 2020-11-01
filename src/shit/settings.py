@@ -134,9 +134,10 @@ SITE_ID = 1
 
 ADD_SLASH = True
 
-from .private_settings import *
+LOGIN_URL = '/admin/login/'
 
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static_collection')
     STATIC_URL = "/static/"
 
+from .private_settings import *

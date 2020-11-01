@@ -18,6 +18,11 @@ Feature: Authoring drafts
         Then I can see a menu item that leads me to the drafts page
         But I don't see the draft
 
+    Scenario: Anonymous drafts make main menu item appear
+        Given an anonymous draft
+        When I am on the index page
+        Then I can see a menu item that leads me to the drafts page
+
     Scenario: My drafts
         Given I have written a draft
         When I am on the drafts page
