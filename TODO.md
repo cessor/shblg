@@ -69,6 +69,6 @@ Todo
     - [ ] Hilfe, Dokumentation
  - [ ] Features
     - [ ] Comments / Review im Draft-Modus
-    - [ ] Draft mode
+    - [x] Draft mode
         - [x] Drafts
-        - [ ] Anonyme Drafts sollten das Menü oben aktivieren
+        - [x] Anonyme Drafts sollten das Menü oben aktivieren
