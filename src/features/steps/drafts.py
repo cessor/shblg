@@ -114,7 +114,7 @@ def go_to_index_page(context):
 def look_at_menu_items(context):
     context.test.assertInHTML(
         '''<a href="/entwurf">Entwürfe</a>''',
-        context.response.content.decode('utf-8')
+        context.response.render().content.decode('utf-8')
     )
 
 
@@ -395,3 +395,14 @@ def assert_draft_not_in_article_list(context):
         context.draft.title,
         context.response.content.decode('utf-8')
     )
+
+@given(u'an anonymous draft')
+def create_anonymous_article(context):
+    from blog.models import Article
+    anonymous_article = Article.objects.create(
+        # http://pfs-online.at/1/papers/pp-budapest2019.pdf
+        title='Orthodoxy? Mainstream? Evolution? Revolution?',
+        content='Is the PCA still a therapeutic and societal counter-model?',
+        published=None,
+    )
+    context.anonymous_article = anonymous_article

@@ -4,7 +4,9 @@
     <li class="menuitem"><a href="{% url 'blog:tags' %}">{% trans 'Themen' %}</a></li>
     <li class="menuitem"><a href="{% url 'blog:archive' %}">{% trans 'Archiv' %}</a></li>
     <li class="menuitem"><a href="{% url 'blog:authors' %}">{% trans 'Autoren' %}</a></li>
-    {% if perms.blog.view_draft and user.articles.drafts %}
+    {% if perms.blog.view_draft %}
+    {% if user.articles.drafts or anonymous_drafts %}
     <li class="menuitem"><a href="{% url 'blog:drafts' %}">{% trans 'Entwürfe' %}</a></li>
+    {% endif %}
     {% endif %}
 </ul>

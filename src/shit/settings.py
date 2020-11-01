@@ -63,7 +63,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'blog.context_processors.site'
+                'blog.context_processors.site',
+                'blog.context_processors.anonymous_drafts',
             ],
         },
     },
@@ -136,8 +137,9 @@ ADD_SLASH = True
 
 LOGIN_URL = '/admin/login/'
 
+from .private_settings import *
+
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static_collection')
     STATIC_URL = "/static/"
 
-from .private_settings import *

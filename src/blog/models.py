@@ -179,6 +179,9 @@ class DraftsManager(models.Manager):
             published__isnull=True
         )
 
+    def anonymous(self):
+        return self.get_queryset().filter(authors=None)
+
 
 class ArticleQuerySet(models.QuerySet):
     def drafts(self):
