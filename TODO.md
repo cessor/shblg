@@ -34,7 +34,6 @@ Todo
     - [ ] Nice to have: Croppie
     - [ ] Author-Seiten sollten Username als Slugs nutzen, nicht IDs
     - [ ] Autoren mit Gesicht anzeigen
- - [ ] OGTags
  - [ ] Tabellen-Layout: Irgendwas verschlimmbessert, die halb-große Tabelle ist zu breit?
  - [ ] Bilder:
      - [ ] Grundsätzlich in Seite zentrieren

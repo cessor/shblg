@@ -2,6 +2,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.urls import path
 from django.views.generic import ListView, DetailView
 from django.views.generic import ArchiveIndexView, TemplateView
+from . import views
 from .models import Article, Author, Tag
 from .sitemaps import Sitemaps
 
@@ -22,23 +23,6 @@ urlpatterns = [
         view=sitemap,
         kwargs={'sitemaps': dict(Sitemaps())},
         name='django.contrib.sitemaps.views.sitemap'
-    ),
-    path(
-        route='thema',
-        view=ListView.as_view(
-            model=Tag,
-            get_queryset=Tag.with_articles.all,
-            context_object_name='tags'
-        ),
-        name='tags'
-    ),
-    path(
-        route='thema/<slug:slug>',
-        view=DetailView.as_view(
-            model=Tag,
-            context_object_name='tag'
-        ),
-        name='tag'
     ),
     path(
         route='author/',
@@ -64,6 +48,38 @@ urlpatterns = [
             allow_empty = True
         ),
         name='archive'
+    ),
+    path(
+        route='entwurf/<slug:slug>',
+        view=views.DraftView.as_view(),
+        name='draft'
+    ),
+    path(
+        route='entwurf/<slug:slug>/publish',
+        view=views.PublishDraftView.as_view(),
+        name='publish_now'
+    ),
+    path(
+        route='entwurf',
+        view=views.DraftsView.as_view(),
+        name='drafts'
+    ),
+    path(
+        route='thema',
+        view=ListView.as_view(
+            model=Tag,
+            get_queryset=Tag.with_articles.all,
+            context_object_name='tags'
+        ),
+        name='tags'
+    ),
+    path(
+        route='thema/<slug:slug>',
+        view=DetailView.as_view(
+            model=Tag,
+            context_object_name='tag'
+        ),
+        name='tag'
     ),
     path(
         route='<slug:slug>',

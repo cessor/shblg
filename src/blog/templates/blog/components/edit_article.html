@@ -1,4 +1,5 @@
 {% load i18n %}
 {% if perms.blog.change_article %}
-    {% trans 'Du kannst diesen Artikel' %}&nbsp;<a href="{% url 'admin:blog_article_change' article.id %}">{% trans 'bearbeiten' %}</a>.
+    {% trans 'Du kannst diesen Artikel' %}&nbsp;<a href="{% url 'admin:blog_article_change' article.id %}">{% trans 'bearbeiten' %}</a>
+    {% if perms.blog.publish_draft and not article.published %} oder <a href="{% url 'blog:publish_now' article.slug %}">{% trans 'jetzt veröffentlichen' %}</a>{% endif %}.
 {% endif %}

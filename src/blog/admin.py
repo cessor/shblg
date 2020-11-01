@@ -16,10 +16,10 @@ class AuthorAdmin(UserAdmin):
     # Don't change these commas
     fieldsets = (
         (
-            _('Biografie'), { 'fields': ('biography', 'updated') }
+            _('Biografie'), {'fields': ('biography', 'updated')}
         ),
         (
-            _('PGP'), { 'fields': ('pgp_public_key',) }
+            _('PGP'), {'fields': ('pgp_public_key',)}
         ),
     ) + UserAdmin.fieldsets
 
@@ -38,7 +38,7 @@ class AuthorAdmin(UserAdmin):
         # Disable all fields
         disabled_fields = [
             field.name for field in models.Author._meta.fields
-        ] + [ 'groups', 'user_permissions',]
+        ] + ['groups', 'user_permissions', ]
 
         # Superusers can do whatevery they want
         if is_superuser:
@@ -64,7 +64,6 @@ class AuthorAdmin(UserAdmin):
         return form
 
 
-
 @admin.register(models.Tag)
 class TagAdmin(admin.ModelAdmin):
     pass
@@ -79,6 +78,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
     search_fields = ['title']
 
-    list_filter = ['authors', 'tags', 'created', 'updated']
+    list_filter = ['authors', 'published', 'created', 'updated', 'tags']
 
-    list_display = ['title', 'author_display', 'created', 'updated', 'site']
+    list_display = ['title', 'author_display', 'published',
+                    'created', 'updated', 'site']

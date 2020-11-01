@@ -18,6 +18,6 @@
     {% endif %}
 
     <h2>{% trans 'Artikel von' %}&nbsp;{{ author.first_name}}</h2>
-    {% include 'blog/components/articles.html' with articles=author.articles.all %}
+    {% include 'blog/components/articles.html' with articles=author.articles.published %}
 </section>
 {% endblock %}
