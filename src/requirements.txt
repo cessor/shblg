@@ -3,3 +3,4 @@ gunicorn
 mistune
 PGPy
 Pygments
+Pillow
