@@ -55,7 +55,7 @@ class Author(AbstractUser):
         ordering = ['first_name']
 
     def get_absolute_url(self):
-        return reverse('blog:author', args=[self.id])
+        return reverse('blog:author', args=[self.username])
 
 
 class Color:

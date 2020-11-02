@@ -33,10 +33,11 @@ urlpatterns = [
         name='authors'
     ),
     path(
-        route='author/<int:pk>',
+        route='author/<slug:slug>',
         view=DetailView.as_view(
             model=Author,
-            context_object_name='author'
+            context_object_name='author',
+            slug_field='username'
         ),
         name='author'
     ),
