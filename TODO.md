@@ -53,6 +53,7 @@ Todo
      - [ ] Große Bilder mit Bleedout?
      - [ ] Bilder-Manager: Crop-Funktion fürs Layout
      - [ ] Email: Bilder per Anhang werden dem Artikel beigefügt
+     - [ ] Gutes Default-Bild für Bilder, die nicht gefunden wurden
      - [x] Bilder-Upload
      - [x] Bilder sollten responsive eingebunden werden
  - [ ] Email
