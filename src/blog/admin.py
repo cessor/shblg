@@ -89,6 +89,8 @@ class ArticleAdmin(admin.ModelAdmin):
 class PreviewWidget(admin.widgets.AdminFileWidget):
     def render(self, name, value, attrs=None, **kwargs):
         input_html = super().render(name, value, attrs=None, **kwargs)
+        if not value:
+            return input_html
         img_html = mark_safe(f'<img src="{value.url}">')
         return f'{input_html}<br>{img_html}'
 
@@ -111,6 +113,8 @@ class ImageAdmin(admin.ModelAdmin):
         )
 
     def resolution(self, instance):
+        if not instance.image:
+            return '-'
         return f'{instance.width} x {instance.height}'
 
     form = ImageForm
