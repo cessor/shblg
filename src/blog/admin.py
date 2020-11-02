@@ -1,7 +1,9 @@
+from django import forms
 from django.contrib import admin
-from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.admin import UserAdmin
-
+from django.utils.html import format_html
+from django.utils.safestring import mark_safe
+from django.utils.translation import gettext_lazy as _
 from . import models
 
 
@@ -82,3 +84,48 @@ class ArticleAdmin(admin.ModelAdmin):
 
     list_display = ['title', 'author_display', 'published',
                     'created', 'updated', 'site']
+
+
+class PreviewWidget(admin.widgets.AdminFileWidget):
+    def render(self, name, value, attrs=None, **kwargs):
+        input_html = super().render(name, value, attrs=None, **kwargs)
+        img_html = mark_safe(f'<img src="{value.url}">')
+        return f'{input_html}<br>{img_html}'
+
+
+class ImageForm(forms.ModelForm):
+    image = forms.ImageField(widget=PreviewWidget)
+
+    class Meta:
+        model = models.Image
+        fields = ['title', 'image']
+
+
+@admin.register(models.Image)
+class ImageAdmin(admin.ModelAdmin):
+    def thumbnail(self, instance):
+        return format_html(
+            '<img class="thumbnail" src="{image}" title="{title}">',
+            image=instance.image.url,
+            title=instance.title
+        )
+
+    def resolution(self, instance):
+        return f'{instance.width} x {instance.height}'
+
+    form = ImageForm
+
+    search_fields = ['title']
+
+    list_filter = ['created', 'updated']
+
+    list_display = ['thumbnail', 'title', 'created', 'updated']
+
+    list_display_links = ['thumbnail', 'title']
+
+    readonly_fields = ['resolution', 'width', 'height', 'created', 'updated']
+
+    class Media:
+        css = {
+            'all': ('blog/image_admin.css', )
+        }

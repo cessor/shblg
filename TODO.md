@@ -39,7 +39,7 @@ Todo
  - [x] Autoren werden alphabetisch ausgegeben
  - [x] Übersetzung - good enough
  - [ ] Autoren
-    - [ ] Author-Seiten sollten Username als Slugs nutzen, nicht IDs
+    - [x] Author-Seiten sollten Username als Slugs nutzen, nicht IDs
     - [ ] User-Bilder an fester Stelle
     - [ ] Nice to have: Croppie
     - [ ] Autoren mit Gesicht anzeigen
@@ -51,9 +51,9 @@ Todo
  - [ ] Bilder:
      - [ ] Grundsätzlich in Seite zentrieren
      - [ ] Große Bilder mit Bleedout?
-     - [ ] Bilder-Upload
      - [ ] Bilder-Manager: Crop-Funktion fürs Layout
      - [ ] Email: Bilder per Anhang werden dem Artikel beigefügt
+     - [x] Bilder-Upload
      - [x] Bilder sollten responsive eingebunden werden
  - [ ] Email
      - [ ] Antworten

@@ -137,6 +137,9 @@ ADD_SLASH = True
 
 LOGIN_URL = '/admin/login/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 from .private_settings import *
 
 if not DEBUG:

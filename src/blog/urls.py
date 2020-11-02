@@ -1,13 +1,15 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from django.urls import path
 from django.views.generic import ListView, DetailView
 from django.views.generic import ArchiveIndexView, TemplateView
+
 from . import views
 from .models import Article, Author, Tag
 from .sitemaps import Sitemaps
 
 app_name = 'blog'
-
 
 urlpatterns = [
     path(
@@ -46,7 +48,7 @@ urlpatterns = [
         view=ArchiveIndexView.as_view(
             model=Article,
             date_field='published',
-            allow_empty = True
+            allow_empty=True
         ),
         name='archive'
     ),
@@ -90,6 +92,10 @@ urlpatterns = [
         ),
         name='article'
     ),
+    *static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+    ),
     path(
         route='',
         view=ListView.as_view(
@@ -100,3 +106,5 @@ urlpatterns = [
         name='index'
     ),
 ]
+
+

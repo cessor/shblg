@@ -297,3 +297,50 @@ class Article(Sluggable, models.Model):
             ("view_draft", _("Can view draft")),
             ("publish_draft", _("Can publish draft")),
         )
+
+
+class Image(models.Model):
+    title = models.CharField(
+        max_length=255
+    )
+
+    image = models.ImageField(
+        _('Bild'),
+        upload_to='images',
+        height_field='height',
+        width_field='width',
+        max_length=255,
+        null=True,
+        blank=True
+    )
+
+    width = models.PositiveSmallIntegerField(
+        verbose_name=_('Breite'),
+        null=True,
+        blank=True,
+        help_text=_('Pixel'),
+    )
+
+    height = models.PositiveSmallIntegerField(
+        verbose_name=_('Höhe'),
+        null=True,
+        blank=True,
+        help_text=_('Pixel'),
+    )
+
+    created = models.DateTimeField(
+        verbose_name=_('Erstellt am'),
+        auto_now_add=True
+    )
+
+    updated = models.DateTimeField(
+        verbose_name=_('Geändert am'),
+        auto_now=True
+    )
+
+    def __str__(self):
+        return str(self.title)
+
+    class Meta:
+        verbose_name = _('Bild')
+        verbose_name_plural = _('Bilder')
