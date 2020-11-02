@@ -84,6 +84,11 @@ DATABASES = {
 }
 
 
+ADMINS = [
+    ('Johannes Hofmeister', 'random.kumbier.it@spam.cessor.de')
+]
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
@@ -100,6 +105,28 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+LOGGING = {
+    "version": 1,
+    "handlers": {
+        "console": {
+            'level': 'DEBUG',
+            "class": "logging.StreamHandler"
+        },
+        'mail_admins': {
+          'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+    },
+    "loggers": {
+        'django.request': {
+            'handlers': ['mail_admins', 'console'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    },
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
