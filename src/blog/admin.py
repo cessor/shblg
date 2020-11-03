@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib import admin
+from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
@@ -16,7 +17,7 @@ class PreviewWidget(admin.widgets.AdminFileWidget):
         return f'{input_html}<br>{img_html}'
 
 
-class AuthorAdminForm(forms.ModelForm):
+class AuthorAdminForm(UserChangeForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['portrait'].widget = PreviewWidget()
