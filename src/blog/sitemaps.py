@@ -35,12 +35,16 @@ class GenericSitemap(GenericSitemapBase):
     """
     Allows for static configuration of GenericSitemap-Objects
     """
+    priority = 0.5
 
     def __init__(self):
-        super().__init__(info_dict={
-            'queryset': self.queryset,
-            'date_field': self.date_field
-        })
+        super().__init__(
+            info_dict={
+                'queryset': self.queryset,
+                'date_field': self.date_field,
+            },
+            priority=self.priority
+        )
 
 
 class Sitemaps:
@@ -70,7 +74,7 @@ class Sitemaps:
     class Article(GenericSitemap):
         changefreq = ChangeFreq.never
         priority = 0.8
-        queryset = models.Article.objects.all()
+        queryset = models.Article.objects.published()
         date_field = 'published'
 
     class Author(GenericSitemap):
@@ -82,12 +86,10 @@ class Sitemaps:
     class Tag(GenericSitemap):
         changefreq = ChangeFreq.monthly
         priority = 0.1
-        queryset = models.Tag.objects.all()
+        queryset = models.Tag.with_articles.all()
         date_field = 'created'
 
     def __iter__(self):
-        yield 'Tags', self.Tags
-
         # Return all members of the SitmapType
         for item in dir(self):
             member = getattr(self, item)
