@@ -8,7 +8,7 @@
 
 
 {% block content %}
-<section>
+<section class="author">
     <header>
         {% if author.portrait %}
             <img loading="lazy" class="portrait" src="{{ author.portrait.url }}" alt="{% trans 'Porträt von' %} {{ author.first_name }} {{ author.last_name }}">

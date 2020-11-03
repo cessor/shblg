@@ -33,7 +33,7 @@ class AuthorAdmin(UserAdmin):
     has_pgp_key.boolean = True
     has_pgp_key.short_description = _('PGP-Key Hinterlegt?')
 
-    readonly_fields = ['updated']
+    readonly_fields = ['updated', 'last_login', 'date_joined']
 
     fieldsets = (
         # Don't change these commas

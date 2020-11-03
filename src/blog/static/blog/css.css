@@ -87,6 +87,10 @@ main section > header > h1 {
   font-size: 32pt;
 }
 
+main section.author header {
+  text-align: center;
+}
+
 main article code {
   font-family: "Cousine";
   background-color: #f4f4f4;
