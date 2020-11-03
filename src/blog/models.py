@@ -66,7 +66,7 @@ class Author(AbstractUser):
 
     portrait = models.ImageField(
         _('Portait'),
-        upload_to='portrait',
+        upload_to='portraits',
         height_field='height',
         width_field='width',
         max_length=255,

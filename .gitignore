@@ -5,8 +5,7 @@
 *.asc
 private_settings.py
 
-src/media/images/*.*
-src/media/portrait/*.*
+src/media/*/*.*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
