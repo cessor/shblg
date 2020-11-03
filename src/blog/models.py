@@ -14,10 +14,18 @@ import mistune
 
 
 class Sluggable:
+    """
+    Mixin that automatically generates a slug from another field. The other
+    field is specified by setting ``SLUGIFY_FIELD``.
+
+    Uses a customized ``slugify``-function that correcly deals with
+    Umlauts (German ä,ö,ü,ß)
+    """
     SLUGIFY_FIELD = ''
 
     def slugify_german(self, text):
         # Ugly. How else?
+        # Untested: Does this deal with Uppercae correcly?
         text = text.replace('ä', 'ae')
         text = text.replace('ö', 'oe')
         text = text.replace('ü', 'ue')
@@ -25,12 +33,19 @@ class Sluggable:
         return slugify(text)
 
     def save(self, *args, **kwargs):
+        """
+        Saves the object and updates the slug field by
+        slugifying ``SLUGIFY_FIELD`` if no slug is given.
+        """
         if not self.slug:
             self.slug = self.slugify_german(getattr(self, self.SLUGIFY_FIELD))
         super().save(*args, **kwargs)
 
 
 class Author(AbstractUser):
+    """
+    An author writes and publishes articles.
+    """
     pgp_public_key = models.TextField(
         verbose_name=_('Öffentlicher PGP-Schlüssel'),
         null=True,
@@ -55,6 +70,9 @@ class Author(AbstractUser):
         ordering = ['first_name']
 
     def get_absolute_url(self):
+        """
+        Returns the URL for this author.
+        """
         return reverse('blog:author', args=[self.username])
 
 
@@ -124,6 +142,9 @@ class TaggedArticleManager(models.Manager):
 
 
 class Tag(Sluggable, models.Model):
+    """
+    A tag, or topic to categorize :model:`blog.Article`-objects.
+    """
     objects = models.Manager()
     with_articles = TaggedArticleManager()
 
@@ -149,9 +170,15 @@ class Tag(Sluggable, models.Model):
     )
 
     def color(self):
+        """
+        Maps this tag to a discrete color.
+        """
         return Color.from_string(self.tag)
 
-    def get_absolute_url(self):
+    def get_absolute_url(self) -> str:
+        """
+        Returns the URL for this tag.
+        """
         return reverse('blog:tag', args=[self.slug])
 
     def __str__(self):
@@ -203,6 +230,9 @@ class ArticleManager(models.Manager):
 
 
 class Article(Sluggable, models.Model):
+    """
+    An article to be read on our blog.
+    """
     objects = ArticleManager()
     drafts = DraftsManager()
     published_articles = PublishedArticlesManager()
@@ -270,6 +300,9 @@ class Article(Sluggable, models.Model):
 
     @property
     def summary(self):
+        """
+        Returns a shortened version of content.
+        """
         html = mistune.markdown(str(self.content))
         text_without_breaks = ''.join(
             (c if c not in '\n\r\t' else ' ')
@@ -282,6 +315,10 @@ class Article(Sluggable, models.Model):
         )
 
     def get_absolute_url(self):
+        """
+        Returns the URL for this article. In case no ``published`` date is set,
+        the article is considered a draft, which has a different URL.
+        """
         if self.published:
             return reverse('blog:article', args=[self.slug])
         return reverse('blog:draft', args=[self.slug])
@@ -300,7 +337,11 @@ class Article(Sluggable, models.Model):
 
 
 class Image(models.Model):
+    """
+    An image that can be linked in a :model:`blog.Article`.
+    """
     title = models.CharField(
+        verbose_name=_('Titel'),
         max_length=255
     )
 

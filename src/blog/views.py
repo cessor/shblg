@@ -9,17 +9,27 @@ from . import models
 
 
 class DraftView(PermissionRequiredMixin, DetailView):
+    """
+    Displays a draft.
+    """
     permission_required = ('blog.view_draft')
     model = models.Article
     context_object_name = 'article'
 
 
 class DraftsView(PermissionRequiredMixin, ListView):
+    """
+    Displays drafts (i.e. articles without a ```published``` date)
+    """
     permission_required = ('blog.publish_draft')
     model = models.Article
     context_object_name = 'articles'
 
     def get_queryset(self):
+        """
+        Returns drafts for the current user.
+        Anonymous drafts are included.
+        """
         return models.Article.drafts.filter(
             Q(authors__in=[self.request.user]) | Q(authors=None)
         )
@@ -39,6 +49,11 @@ class PublishDraftView(
     model = models.Article
 
     def get_redirect_url(self, *args, **kwargs):
+        """
+        Accesses a draft and publishes it. The user is redirected to
+        the published article. If the requested article is already
+        published, nothing happens and the user is redirected to the article.
+        """
         draft = self.get_object()
         if not draft.published:
             draft.published = timezone.now()
