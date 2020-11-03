@@ -64,6 +64,30 @@ class Author(AbstractUser):
         auto_now=True
     )
 
+    portrait = models.ImageField(
+        _('Portait'),
+        upload_to='portrait',
+        height_field='height',
+        width_field='width',
+        max_length=255,
+        null=True,
+        blank=True
+    )
+
+    width = models.PositiveSmallIntegerField(
+        verbose_name=_('Breite'),
+        null=True,
+        blank=True,
+        help_text=_('Pixel'),
+    )
+
+    height = models.PositiveSmallIntegerField(
+        verbose_name=_('Höhe'),
+        null=True,
+        blank=True,
+        help_text=_('Pixel'),
+    )
+
     class Meta:
         verbose_name = _('Autor')
         verbose_name_plural = _('Autoren')

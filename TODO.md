@@ -40,9 +40,9 @@ Todo
  - [x] Übersetzung - good enough
  - [ ] Autoren
     - [x] Author-Seiten sollten Username als Slugs nutzen, nicht IDs
-    - [ ] User-Bilder an fester Stelle
+    - [x] User-Bilder an fester Stelle
     - [ ] Nice to have: Croppie
-    - [ ] Autoren mit Gesicht anzeigen
+    - [x] Autoren mit Gesicht anzeigen
     - [x] Autoren-Bio
     - [x] Bearbeiten - Link
  - [ ] Tabellen

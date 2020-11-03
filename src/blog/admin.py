@@ -7,31 +7,102 @@ from django.utils.translation import gettext_lazy as _
 from . import models
 
 
+class PreviewWidget(admin.widgets.AdminFileWidget):
+    def render(self, name, value, attrs=None, **kwargs):
+        input_html = super().render(name, value, attrs=None, **kwargs)
+        if not value:
+            return input_html
+        img_html = mark_safe(f'<img src="{value.url}">')
+        return f'{input_html}<br>{img_html}'
+
+
+class AuthorAdminForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['portrait'].widget = PreviewWidget()
+
+
 @admin.register(models.Author)
 class AuthorAdmin(UserAdmin):
+    form = AuthorAdminForm
+
     def has_pgp_key(self, instance):
         return not not instance.pgp_public_key
+
     has_pgp_key.boolean = True
     has_pgp_key.short_description = _('PGP-Key Hinterlegt?')
 
     readonly_fields = ['updated']
-    # Don't change these commas
+
     fieldsets = (
+        # Don't change these commas
+        # These values were adopted from the original django admin fieldsets
+        # This is a static copy, which is brittle, i.e. it might break
+        # if the default fieldsets in the user admin change.
+        #
+        # While it is possible to change the fieldsets by overrider
+        # UserAdmin.get_fieldsets(self, request, instance, **kwargs)
+        # Changing this structure procedurally makes for some hard-to-read
+        # code, this I cloned the structure.
+        #
+        # https://github.com/django/django/blob/master/django/contrib/auth/admin.py#L44
         (
-            _('Biografie'), {'fields': ('biography', 'updated')}
+            None,
+            {
+                'fields': ('username', 'password')
+            }
+        ),
+        (
+            _('Personal info'),
+            {
+                'fields': (
+                    'first_name', 'last_name', 'email',
+                    'portrait', 'biography'
+                )
+            }
         ),
         (
             _('PGP'), {'fields': ('pgp_public_key',)}
         ),
-    ) + UserAdmin.fieldsets
+        (
+            _('Permissions'),
+            {
+                'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions'),
+            }
+        ),
+        (
+            _('Important dates'),
+            {
+                'fields': ('updated', 'last_login', 'date_joined')
+            }
+        ),
+    )
+
+    def get_fieldsets(self, request, instance, **kwargs):
+        """
+        Removes Permission fieldset for normal users.
+        """
+        fieldsets = dict(super().get_fieldsets(request, instance, **kwargs))
+        if not request.user.is_superuser:
+            del fieldsets[_('Permissions')]
+        return tuple(fieldsets.items())
 
     def get_queryset(self, request):
+        """
+        Limits the changable users to the current user.
+        Unless they're superusers, then they can do whatever.
+        """
         queryset = super().get_queryset(request)
         if request.user.is_superuser:
             return queryset
-        return queryset.filter(username=request.user.username)
+        return queryset.filter(
+            username=request.user.username
+        )
 
     def get_form(self, request, obj=None, **kwargs):
+        """
+        Disables some fields for normal users.
+        """
         # Source:
         # https://realpython.com/manage-users-in-django-admin/
         form = super().get_form(request, obj, **kwargs)
@@ -54,6 +125,7 @@ class AuthorAdmin(UserAdmin):
         ):
             disabled_fields.remove('biography')
             disabled_fields.remove('email')
+            disabled_fields.remove('portrait')
             disabled_fields.remove('first_name')
             disabled_fields.remove('last_name')
             disabled_fields.remove('pgp_public_key')
@@ -86,17 +158,10 @@ class ArticleAdmin(admin.ModelAdmin):
                     'created', 'updated', 'site']
 
 
-class PreviewWidget(admin.widgets.AdminFileWidget):
-    def render(self, name, value, attrs=None, **kwargs):
-        input_html = super().render(name, value, attrs=None, **kwargs)
-        if not value:
-            return input_html
-        img_html = mark_safe(f'<img src="{value.url}">')
-        return f'{input_html}<br>{img_html}'
-
-
 class ImageForm(forms.ModelForm):
-    image = forms.ImageField(widget=PreviewWidget)
+    image = forms.ImageField(
+        widget=PreviewWidget
+    )
 
     class Meta:
         model = models.Image

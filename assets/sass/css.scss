@@ -113,6 +113,12 @@ main img {
     @include shadow($color-darkshadow);
 }
 
+main img.portrait {
+    margin: 0 auto;
+    @include shadow($color-darkshadow);
+    border-radius: 50%;
+}
+
 @mixin full-bleed($width) {
     /*
     https://css-tricks.com/the-inside-problem/

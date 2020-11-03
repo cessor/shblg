@@ -6,6 +6,7 @@
 private_settings.py
 
 src/media/images/*.*
+src/media/portrait/*.*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

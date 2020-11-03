@@ -101,6 +101,13 @@ main img {
   box-shadow: 0px 4px 14px 0px #b4afbd;
 }
 
+main img.portrait {
+  margin: 0 auto;
+  /*offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0px 4px 14px 0px #b4afbd;
+  border-radius: 50%;
+}
+
 /* Table Environment */
 main div.table {
   margin-top: 2em;
