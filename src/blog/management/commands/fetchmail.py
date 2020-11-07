@@ -7,7 +7,7 @@ import pgpy  # type: ignore
 
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.db import IntegrityError
 from django.db.models.manager import Manager
 
@@ -15,7 +15,7 @@ from blog.models import Article, Author  # type: ignore
 
 
 # https://stackoverflow.com/questions/44640479/mypy-annotation-for-classmethod-returning-instance
-T = TypeVar('T', bound='MultipartMessage')
+TMultipartMessage = TypeVar('TMultipartMessage', bound='MultipartMessage')
 
 
 class VerificationFailed(Exception):
@@ -59,9 +59,10 @@ class AuthorNotVerifyable(VerificationFailed):
 
 
 class NoSignature(VerificationFailed):
-    def __init__(self, message: email.message.Message):
+    def __init__(self, sender: str):
         super().__init__(
-            "This email was not signed. The sender's identity can't be "
+            "This email was not signed. "
+            f"The sender's {sender} identity can't be "
             "verified. This email will be rejected."
         )
 
@@ -113,21 +114,23 @@ class MultipartMessage:
         self._parse()
 
     @classmethod
-    def from_bytes(cls: Type[T], message: bytes) -> T:
+    def from_bytes(
+        cls: Type[TMultipartMessage],
+        message: bytes) -> TMultipartMessage:
         # Convert from raw data
         return cls(email.message_from_bytes(message))
 
     @property
     def sender_address(self) -> str:
         sender = self._message.get('from')
-        name, email_address = email.utils.parseaddr(sender)
+        _name, email_address = email.utils.parseaddr(sender)
         return email_address
 
     def verify(self, authors: Manager) -> VerifiedMessage:
         try:
             author = authors.get(email=self.sender_address)
-        except ObjectDoesNotExist:
-            raise AuthorUnknown(self.sender_address)
+        except ObjectDoesNotExist as no_author:
+            raise AuthorUnknown(self.sender_address) from no_author
         if not author.pgp_public_key:
             raise AuthorNotVerifyable(author)
 
@@ -136,13 +139,14 @@ class MultipartMessage:
 
         # Mandatory: Verify Signature
         if not self._signature:
-            raise NoSignature(self)
+            raise NoSignature(self.sender_address)
 
         attached_signature = pgpy.PGPSignature()
         attached_signature.parse(self._signature)
-        # TODO: Fucking verify
+
         # Verify signature
-        if not (attached_signature.signer_fingerprint == expected_public_key.fingerprint):
+        if not (attached_signature.signer_fingerprint
+            == expected_public_key.fingerprint):
             raise SignatureMismatch(
                 actual=attached_signature.signer_fingerprint,
                 expected=expected_public_key.fingerprint
@@ -190,7 +194,7 @@ class MultipartMessage:
 
 class ImapError(Exception):
     def __init__(self, error_message: List[bytes]):
-        super().__init__(message[0])
+        super().__init__(error_message[0])
 
 
 class Command(BaseCommand):
@@ -221,7 +225,8 @@ class Command(BaseCommand):
 
             # Fetch ids of ALL mails
             status, mails = imap.search(None, 'ALL')
-            assert status == 'OK'
+            if not status == 'OK':
+                raise ImapError('Something went wrong...')
 
             # Split ids from response
             mail_ids = mails[0].split()
@@ -232,7 +237,7 @@ class Command(BaseCommand):
             for mail_id in mail_ids:
                 # Fetch actual mail
                 status, response = imap.fetch(mail_id, '(RFC822)')
-                (flags, message_bytes), _ = response
+                (_flags, message_bytes), _ = response
 
                 try:
                     # Verify Message
@@ -241,10 +246,10 @@ class Command(BaseCommand):
                         .from_bytes(message_bytes)
                         .verify(Author.objects)
                     )
-                except VerificationFailed as e:
+                except VerificationFailed as verification_error:
                     self.stdout.write(
                         self.style.ERROR(
-                            '%s' % e
+                            '%s' % verification_error
                         )
                     )
                     self._move_email(

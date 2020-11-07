@@ -1,7 +1,7 @@
 import re
+from bs4 import BeautifulSoup
 from django.test import TestCase
 from blog.models import Author, Article
-from bs4 import BeautifulSoup
 
 
 def collapse_whitespace(text):

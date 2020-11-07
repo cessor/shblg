@@ -1,19 +1,18 @@
 import re
 import textwrap
+from typing import Optional # pylint: disable=unused-import
 from django.conf import settings
-from django.contrib.auth.apps import AuthConfig
 from django.contrib.auth.models import AbstractUser
 from django.contrib.sites.managers import CurrentSiteManager
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
-from django.utils.text import slugify as slugify
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
-
 import mistune
 
 
-class Sluggable:
+class Sluggable(models.Model):
     """
     Mixin that automatically generates a slug from another field. The other
     field is specified by setting ``SLUGIFY_FIELD``.
@@ -32,6 +31,15 @@ class Sluggable:
         text = text.replace('ß', 'ss')
         return slugify(text)
 
+    slug = models.SlugField(
+        max_length=255,
+        null=True,
+        blank=True,
+        unique=True,
+        help_text=_('Freilassen, um Slug aus dem Titel zu generieren')
+    )
+
+    # pylint: disable=signature-differs
     def save(self, *args, **kwargs):
         """
         Saves the object and updates the slug field by
@@ -40,6 +48,9 @@ class Sluggable:
         if not self.slug:
             self.slug = self.slugify_german(getattr(self, self.SLUGIFY_FIELD))
         super().save(*args, **kwargs)
+
+    class Meta:
+        abstract = True
 
 
 class Author(AbstractUser):
@@ -117,7 +128,7 @@ class Color:
         "black",
     ]
 
-    class Hash(object):
+    class Hash:
         """
         Source
         https://stackoverflow.com/a/33810066
@@ -138,8 +149,8 @@ class Color:
 
     @classmethod
     def from_string(cls, string):
-        hash = Color.Hash(string, domain=len(Color.COLORS))
-        index = int(hash)
+        hash_ = Color.Hash(string, domain=len(Color.COLORS))
+        index = int(hash_)
         return cls(Color.COLORS[index])
 
 
@@ -179,14 +190,6 @@ class Tag(Sluggable, models.Model):
         null=False,
         blank=False,
         unique=True
-    )
-
-    slug = models.SlugField(
-        max_length=255,
-        null=True,
-        blank=True,
-        unique=True,
-        help_text=_('Freilassen, um Slug aus dem Titel zu generieren')
     )
 
     created = models.DateTimeField(

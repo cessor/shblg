@@ -4,3 +4,5 @@ mistune
 PGPy
 Pygments
 Pillow
+bleach
+bandit

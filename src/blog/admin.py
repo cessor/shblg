@@ -3,18 +3,20 @@ from django.contrib import admin
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
-from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from . import models
 
 
 class PreviewWidget(admin.widgets.AdminFileWidget):
-    def render(self, name, value, attrs=None, **kwargs):
-        input_html = super().render(name, value, attrs=None, **kwargs)
+    def render(self, name, value, attrs=None, renderer=None):
+        input_html = super().render(name, value, attrs, renderer)
         if not value:
             return input_html
-        img_html = mark_safe(f'<img src="{value.url}">')
-        return f'{input_html}<br>{img_html}'
+
+        return format_html(
+            '{}<br><img src="{}">',
+            input_html, value.url
+        )
 
 
 class AuthorAdminForm(UserChangeForm):
@@ -28,7 +30,7 @@ class AuthorAdmin(UserAdmin):
     form = AuthorAdminForm
 
     def has_pgp_key(self, instance):
-        return not not instance.pgp_public_key
+        return instance.pgp_public_key
 
     has_pgp_key.boolean = True
     has_pgp_key.short_description = _('PGP-Key Hinterlegt?')
@@ -79,11 +81,12 @@ class AuthorAdmin(UserAdmin):
         ),
     )
 
-    def get_fieldsets(self, request, instance, **kwargs):
+
+    def get_fieldsets(self, request, obj=None):
         """
         Removes Permission fieldset for normal users.
         """
-        fieldsets = dict(super().get_fieldsets(request, instance, **kwargs))
+        fieldsets = dict(super().get_fieldsets(request, obj))
         if not request.user.is_superuser:
             del fieldsets[_('Permissions')]
         return tuple(fieldsets.items())
@@ -110,9 +113,11 @@ class AuthorAdmin(UserAdmin):
         is_superuser = request.user.is_superuser
 
         # Disable all fields
-        disabled_fields = [
-            field.name for field in models.Author._meta.fields
-        ] + ['groups', 'user_permissions', ]
+        # pylint: disable=no-member,protected-access
+        disabled_fields = (
+            models.Author._meta.get_all_field_names()
+            + ['groups', 'user_permissions']
+        )
 
         # Superusers can do whatevery they want
         if is_superuser:

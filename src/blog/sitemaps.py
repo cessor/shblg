@@ -27,6 +27,7 @@ class StaticViewSitemap(SitemapBase):
     def items(self):
         return [self.name]
 
+    # pylint: disable=arguments-differ
     def location(self, item):
         return reverse(item)
 
@@ -36,6 +37,7 @@ class GenericSitemap(GenericSitemapBase):
     Allows for static configuration of GenericSitemap-Objects
     """
     priority = 0.5
+    date_field = '' # type: ignore
 
     def __init__(self):
         super().__init__(

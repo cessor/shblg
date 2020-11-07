@@ -9,7 +9,7 @@ from . import views
 from .models import Article, Author, Tag
 from .sitemaps import Sitemaps
 
-app_name = 'blog'
+app_name = 'blog' # pylint: disable=invalid-name
 
 urlpatterns = [
     path(
@@ -106,5 +106,3 @@ urlpatterns = [
         name='index'
     ),
 ]
-
-

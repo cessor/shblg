@@ -6,6 +6,7 @@ def site(request):
     return {'SITE': get_current_site(request)}
 
 
+# pylint: disable=unused-argument
 def anonymous_drafts(request):
     """
     If there are drafts,

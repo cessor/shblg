@@ -1,7 +1,6 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.base import RedirectView
-from django.views import View
 from django.views.generic import DetailView, ListView
 from django.db.models import Q
 from django.utils import timezone

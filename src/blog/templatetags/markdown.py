@@ -19,7 +19,7 @@ class HighlightRenderer(mistune.Renderer):
     def environment(self, code, name: str):
         return '\n<div class="%s">%s</div>\n' % (name, mistune.markdown(code))
 
-    def block_code(self, code, lang):
+    def block_code(self, code, lang=None):
         if not lang:
             self.default(code)
         try:
@@ -39,6 +39,6 @@ _markdown = mistune.Markdown(renderer=HighlightRenderer())
 def markdown(value):
     try:
         return _markdown(value)
-    except:
+    except: #pylint: disable=bare-except
         # Default to the non-fancy markdown output
         return mistune.markdown(value)
