@@ -14,6 +14,7 @@ Todo
     - [ ] CSS
         - [ ] CSS basierte TOC an Anfang des Artikels? of the article? (No JS!!!)
         - [ ] Darkmode nachbessern. Darkmode oder sonstige CSS Cookie enablen
+        - [ ] Abstand vor Zwischenüberschriften größer.
     - [ ] Environments:
         - [ ] Bash
         - [x] ```tldr```

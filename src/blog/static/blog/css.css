@@ -87,6 +87,15 @@ main section > header > h1 {
   font-size: 32pt;
 }
 
+main article h1,
+main article h2,
+main article h3,
+main article h4,
+main article h5,
+main article h6 {
+  margin-top: 1.5em;
+}
+
 main section.author header {
   text-align: center;
 }
