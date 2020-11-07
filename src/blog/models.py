@@ -326,6 +326,10 @@ class Article(Sluggable, models.Model):
     )
 
     @property
+    def word_count(self):
+        return len(str(self.content).split())
+
+    @property
     def summary(self):
         """
         Returns a shortened version of content.

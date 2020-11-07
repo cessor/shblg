@@ -35,8 +35,14 @@ Todo
      - [x] Site in den List-Fields des Article-Admin anzeigen
  - [ ] SEO
     - [x] robots.txt
-    - [ ] OG Tags
-    - [ ] JSON-LD
+    - [ ] Artikel
+        - [x] Metadaten
+        - [x] OG Tags
+        - [x] JSON-LD
+    - [ ] Author
+        - [ ] Metadaten
+        - [ ] OG Tags
+        - [ ] JSON-LD
  - [x] Autoren werden alphabetisch ausgegeben
  - [x] Übersetzung - good enough
  - [ ] Autoren
