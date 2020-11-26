@@ -115,7 +115,7 @@ class AuthorAdmin(UserAdmin):
         # Disable all fields
         # pylint: disable=no-member,protected-access
         disabled_fields = (
-            models.Author._meta.get_all_field_names()
+            [field.name for field in Author._meta.fields]
             + ['groups', 'user_permissions']
         )
 
