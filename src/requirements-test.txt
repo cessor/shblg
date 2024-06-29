@@ -1,2 +1,7 @@
-python-behave
 sphinx
+pylint
+bandit
+mypy
+django-stubs
+beautifulsoup4
+lxml

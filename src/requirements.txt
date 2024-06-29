@@ -4,4 +4,3 @@ mistune
 PGPy
 Pygments
 Pillow
-bandit

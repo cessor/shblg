@@ -8,28 +8,29 @@ import mistune
 register = template.Library()
 
 
-class HighlightRenderer(mistune.Renderer):
+class HighlightRenderer(mistune.HTMLRenderer):
     """
     Source: https://github.com/lepture/mistune/issues/54
     """
-
     def default(self, code):
-        return '\n<pre><code>%s</code></pre>\n' % mistune.escape(code)
+        return f"\n<pre><code>{mistune.escape(code)}</code></pre>\n"
 
     def environment(self, code, name: str):
-        return '\n<div class="%s">%s</div>\n' % (name, mistune.markdown(code))
+        return f'\n<div class="{name}">{mistune.markdown(code)}</div>\n'
 
-    def block_code(self, code, lang=None):
-        if not lang:
-            self.default(code)
+    def block_code(self, code, info=None):
+        if not info:
+            return self.default(code)
+
         try:
-            lexer = get_lexer_by_name(lang, stripall=True)
+            lexer = get_lexer_by_name(info, stripall=True)
         except ClassNotFound:
-            # A lexer couldn't be found, so its probably a custom environment
-            return self.environment(code, lang)
-        else:
-            formatter = html.HtmlFormatter(lineseparator="<br>")
-            return highlight(code, lexer, formatter)
+            # A lexer couldn't be found, so its probably a custom environment,
+            # e.g. "note, caution, tldr"
+            return self.environment(code, info)
+
+        formatter = html.HtmlFormatter(lineseparator="<br>")
+        return highlight(code, lexer, formatter)
 
 
 _markdown = mistune.Markdown(renderer=HighlightRenderer())

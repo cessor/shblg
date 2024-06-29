@@ -11,7 +11,7 @@ class DraftView(PermissionRequiredMixin, DetailView):
     """
     Displays a draft.
     """
-    permission_required = ('blog.view_draft')
+    permission_required = 'blog.view_draft'
     model = models.Article
     context_object_name = 'article'
 
@@ -20,7 +20,7 @@ class DraftsView(PermissionRequiredMixin, ListView):
     """
     Displays drafts (i.e. articles without a ```published``` date)
     """
-    permission_required = ('blog.publish_draft')
+    permission_required = 'blog.publish_draft'
     model = models.Article
     context_object_name = 'articles'
 
@@ -44,7 +44,7 @@ class PublishDraftView(
 
     The view redirects to articles final, published view.
     """
-    permission_required = ('blog.publish_draft')
+    permission_required = 'blog.publish_draft'
     model = models.Article
 
     def get_redirect_url(self, *args, **kwargs):
